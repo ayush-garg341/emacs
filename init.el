@@ -58,7 +58,7 @@
   :config
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-project-search-path '("/home/shivam/debouncing_throttling/"))
+  (setq projectile-project-search-path '("/home/shivam/debouncing_throttling/" "/home/shivam/my_project/blog_website/" "/home/shivam/my_project/blog_website_backend"))
   (projectile-mode +1))
 
 (use-package helm-projectile
