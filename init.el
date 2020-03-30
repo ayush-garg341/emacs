@@ -248,4 +248,13 @@
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
+
+;; Using helm package to narrow down search
+(use-package helm
+:demand t
+:config
+  (helm-mode 1)
+)
+
+
 ;;; init.el ends here
