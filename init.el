@@ -13,7 +13,9 @@
     (tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(tooltip-mode nil))
+ '(tooltip-mode nil)
+ (menu-bar-mode -1)
+ (tool-bar-mode -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
