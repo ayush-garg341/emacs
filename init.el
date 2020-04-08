@@ -8,14 +8,14 @@
  '(display-line-numbers-type (quote relative))
  '(display-time-mode t)
  '(global-display-line-numbers-mode t)
+ '(menu-bar-mode -1)
  '(package-selected-packages
    (quote
-    (tabbar treemacs try helm-projectile projectile which-key use-package)))
+    (emms tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(tooltip-mode nil)
- (menu-bar-mode -1)
- (tool-bar-mode -1))
+ '(tool-bar-mode -1)
+ '(tooltip-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -286,5 +286,16 @@
    ("M-0"       . treemacs-select-window)
    ("C-c 1"     . treemacs-delete-other-windows)
 ))
+
+
+;; using emms to play music
+(use-package emms-setup
+  :init
+  (add-hook 'emms-player-started-hook 'emms-show)
+  (setq emms-show-format "Playing: %s")
+  :config
+  (emms-standard)
+  (emms-default-players))
+
 
 ;;; init.el ends here
