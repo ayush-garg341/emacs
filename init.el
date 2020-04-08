@@ -1,5 +1,4 @@
-(
- custom-set-variables
+(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -11,7 +10,7 @@
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
    (quote
-    (try helm-projectile projectile which-key use-package)))
+    (tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tooltip-mode nil))
@@ -58,7 +57,7 @@
   :config
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-project-search-path '("/home/shivam/debouncing_throttling/" "/home/shivam/my_project/blog_website/" "/home/shivam/my_project/blog_website_backend"))
+  (setq projectile-project-search-path '("~/my_project/blog_website/" "~/my_project/blog_website_backend" "~/tripock_project/remotepatientmonitoring"))
   (projectile-mode +1))
 
 (use-package helm-projectile
@@ -74,12 +73,12 @@
 
 
 ;; If you like the tabbar
-;;(use-package tabbar
-;;  :ensure t
-;;  :config
-;;  (tabbar-mode 1)
-;;
-;;)
+(use-package tabbar
+  :ensure t
+  :config
+  (tabbar-mode 1)
+
+)
 
 ;; For powerful search
 
@@ -256,5 +255,34 @@
   (helm-mode 1)
 )
 
+;; for file browser use  treemacs
+(use-package treemacs
+:ensure t
+:defer t
+:config
+ (progn
+  (setq treemacs-follow-after-init          t
+        treemacs-width                      35
+        treemacs-indentation                2
+        treemacs-git-integration            t
+        treemacs-collapse-dirs              3
+        treemacs-silent-refresh             nil
+        treemacs-change-root-without-asking nil
+        treemacs-sorting                    'alphabetic-desc
+        treemacs-show-hidden-files          t
+        treemacs-never-persist              nil
+        treemacs-is-never-other-window      nil
+        treemacs-goto-tag-strategy          'refetch-index)
+
+ (treemacs-follow-mode t)
+ (treemacs-filewatch-mode t))
+ :bind
+ (:map global-map
+   ([f8]        . treemacs-toggle)
+   ([f9]        . treemacs-projectile-toggle)
+   ("<C-M-tab>" . treemacs-toggle)
+   ("M-0"       . treemacs-select-window)
+   ("C-c 1"     . treemacs-delete-other-windows)
+))
 
 ;;; init.el ends here
