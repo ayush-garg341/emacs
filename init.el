@@ -8,13 +8,13 @@
  '(display-line-numbers-type (quote relative))
  '(display-time-mode t)
  '(global-display-line-numbers-mode t)
- '(menu-bar-mode -1)
+ (menu-bar-mode -1)
  '(package-selected-packages
    (quote
     (emms tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(tool-bar-mode -1)
+ (tool-bar-mode -1)
  '(tooltip-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
