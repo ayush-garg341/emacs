@@ -8,14 +8,15 @@
  '(display-line-numbers-type (quote relative))
  '(display-time-mode t)
  '(global-display-line-numbers-mode t)
- (menu-bar-mode -1)
+ '(nil nil t)
  '(package-selected-packages
    (quote
-    (emms tabbar treemacs try helm-projectile projectile which-key use-package)))
+    (dumb-jump emms tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- (tool-bar-mode -1)
- '(tooltip-mode nil))
+ '(tooltip-mode nil)
+ (menu-bar-mode -1)
+ (tool-bar-mode -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -24,6 +25,13 @@
  )
 
 ;; my_settings
+
+;; set maximum indentation for description lists
+(setq org-list-description-max-indent 5)
+
+;; prevent demoting heading also shifting text inside sections
+(setq org-adapt-indentation nil)
+
 (setq inhibit-splash-screen t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -59,7 +67,7 @@
   :config
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-project-search-path '("~/my_project/blog_website/" "~/my_project/blog_website_backend" "~/tripock_project/remotepatientmonitoring"))
+  (setq projectile-project-search-path '( "~/tripock_project/remotepatientmonitoring"))
   (projectile-mode +1))
 
 (use-package helm-projectile
@@ -87,6 +95,18 @@
 (use-package counsel
 :ensure t
 )
+
+
+(use-package ivy
+  :ensure t
+  :diminish (ivy-mode)
+  :bind (("C-x b" . ivy-switch-buffer))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "%d/%d ")
+  (setq ivy-display-style 'fancy))
+
 
 (use-package swiper
 :ensure t
@@ -297,5 +317,36 @@
   (emms-standard)
   (emms-default-players))
 
+
+;; use dumb-jump to go to function definition
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+	 ("M-g b" . dumb-jump-back)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config 
+  ;; (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+:init
+(dumb-jump-mode)
+  :ensure
+)
+
+
+;; rename file function
+(defun rename-file-and-buffer ()
+  "Rename the current buffer and file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (message "Buffer is not visiting a file!")
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
+
+(global-set-key (kbd "C-c r")  'rename-file-and-buffer)
 
 ;;; init.el ends here
