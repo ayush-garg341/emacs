@@ -1,0 +1,6 @@
+* Today Monday  13-04-2020 todos.
+** Task list
+*** CheckList [2/3]
+- [X] Learn Org mode part 2 for tables.
+- [X] Learn webpack config part 2.
+- [ ] Learn the functioning of Browser router react and its three objects match, history, location.
