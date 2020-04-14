@@ -1,0 +1,74 @@
+* Links and images
+Org mode supports links to files, URLs, and to other points in the org
+file. In this example let's use an image from my website. First copy
+it to the current directory. You can do this within emacs but for now
+just run this command in your terminal.
+
+curl http://www.star.bris.ac.uk/bjm/superman_cluster.gif -o superman_cluster.gif
+
+To add a link to a file use C-u C-c C-l and type the name of a file.
+Use tab-completion to select the image we just copied and you will
+then be asked for a description - you can press enter to leave this
+blank. This will create a link that looks like this
+
+[[file:superman_cluster.gif]]
+
+The links to my two previous org files one for making notes and other for handling tables:
+[[file:notes.org][Link to making notes file]]
+[[file:tables.org]]
+
+
+If you do this in your org file, you wont see the [[ ]] above, instead
+you'll see the text as a clickable link.
+
+Since the file we have linked to is an image, we can tell emacs to open the
+image in inline mode in the document using C-c C-x C-v and use the same command to
+turn the image off again.
+
+You can also click the link with the mouse, or use C-c C-o to follow
+it, which might open your web browser, an image viewer or open a file
+in emacs depending on the target of the link.
+
+The structure of a link in org mode looks like this
+
+#+BEGIN_EXAMPLE
+[[link address][description]]
+#+END_EXAMPLE
+
+(I've enclosed the link in an example block which prevents org-mode
+from trying to interpret as a real link, for the purpose of showing
+its structure - we'll come back to blocks like this later.)
+
+The link address is the URL or file name, and the description is the
+text that is displayed, so we can replace our superman link with
+something tidier like [[file:superman_cluster.gif][this]]
+
+Links to web pages are easy - just put the http address in as the link
+address. Use C-c C-l as a quick way to add such a link (remember we
+used C-u C-c C-l is for adding a link to a file).
+
+Two links to Link to youtube:
+[[https://www.youtube.com/]]
+
+[[https://www.youtube.com/][youtube link]]
+
+Links to other parts of the org file are added easily like [[Links and
+images][this link]]. Because the address part of the link matches a
+headline in this document, then org-mode points the link to that part
+of the file. Clicking it will move the cursor there.
+
+Finally, we can add a caption and a name to our image like this
+
+#+CAPTION: Superman and a galaxy cluster
+#+NAME: fig.super
+[[file:superman_cluster.gif]]
+
+which means we can refer to our image later with a link like this one
+[[fig.super]]
+
+
+* Basic commands re-capture
+1. C-c C-u C-l  => To add the link to a local file that exist on your system.
+2. C-c C-x C-v  => To open the image in inline mode and same to turn it off
+3. C-c C-l      => To add link to web pages
+4. C-c C-o      => Click the link with the mouse, or use C-c C-o to follow it

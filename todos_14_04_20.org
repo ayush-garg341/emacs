@@ -1,0 +1,7 @@
+* Today Tuesday 14-04-20 todos
+** Task List
+*** Checklist [3/4]
+- [X] Learn basic html from the CSS  course
+- [ ] Learn basic CSS
+- [X] Org mode part 3 for embedding links
+- [X] Learn Webpack part 3  
