@@ -1,0 +1,6 @@
+* Today Wednesday 15-04-20 todos
+** Task List
+*** Checklist [3/4]
+- [ ] Learn basic CSS
+- [ ] Org mode part 4 formatting text and source code. 
+- [ ] Learn Webpack part 4  
