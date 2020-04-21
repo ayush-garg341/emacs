@@ -1,0 +1,15 @@
+* Things to explain related to VS code and uses of emacs.
+** Why not use Vs code.
+*** Consumes too much RAM. (Electron App) 
+*** More inclined towards being GUI so feels a bit slow.
+*** Under microsoft license and hence use keylogger and telemetry.
+
+** Why use emacs.
+*** Very less amount of RAM.
+*** More keyboard oriented.
+*** Can be used as a complete Operating System
+*** Emacs client and emacs server.
+*** Org mode
+*** Huge number of packages available.
+*** No keylogger and no tracking
+*** Email integration
