@@ -1,9 +1,9 @@
 * Major things to learn 
 ** Task List
-*** Checklist [0/0]
+*** Checklist [1/3]
 - [ ] Learn CSS thoroughly.
-- [ ] Learn how browser router / router works in react.
-- [ ] Learn MongoDb courses from MongoDb University [0/0]
+- [X] Learn how browser router / router works in react.
+- [ ] Learn MongoDb courses from MongoDb University [0/6]
   - [ ] MongoDb Basics
   - [ ] MongoDb basic cluster administration
   - [ ] MongoDb Aggregation Framework
