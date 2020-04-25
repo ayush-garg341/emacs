@@ -1,0 +1,4 @@
+** Exporting notes to html and pdf
+*** We will look at exporting the notes as a web page or pdf document. One strength of org-mode is the ability to export to multiple formats.Probably the most useful to begin with are web pages and pdf (via latex)
+*** To export your org file to a web page, type C-c C-e to start the exporter and then press h to select html and o to select open. A new web page should now open in your browser.
+*** Similarly, typing l and o in the exporter will convert the org file to latex and then compile it to produce a pdf and display that.

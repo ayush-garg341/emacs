@@ -352,4 +352,20 @@
 
 (global-set-key (kbd "C-c r")  'rename-file-and-buffer)
 
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (shell . t)
+   (python . t)
+   (R . t)
+   (ditaa . t)
+   (perl . t)
+   (gnuplot t)
+   ))
+
+
+;; to set your default coding system to utf-8.( eg:  each of them encountered characters it couldn’t encode: iso-latin-1-unix cannot encode these: _’)
+(prefer-coding-system 'utf-8)
+
 ;;; init.el ends here

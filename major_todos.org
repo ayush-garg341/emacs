@@ -10,3 +10,8 @@
   - [ ] MongoDb for javascript developers.
   - [ ] MongoDb Performance
   - [ ] Data Modelling
+
+** Things that needs to be learned and will take quite some time and consistency and can not be done immediately.
+- [ ] My blog website project to practice react, node and mongodb
+- [ ] Learn DS and Algo and implement them in C and practice on Leet code.
+- [ ] Learn clojure which is a dialect of LISP.
