@@ -368,4 +368,13 @@
 ;; to set your default coding system to utf-8.( eg:  each of them encountered characters it couldn’t encode: iso-latin-1-unix cannot encode these: _’)
 (prefer-coding-system 'utf-8)
 
+
+;; To switch between different windows use ace-windo
+(use-package ace-window
+      :ensure t
+      :config
+      (setq aw-scope 'frame) ;; was global
+      (global-set-key (kbd "C-x O") 'other-frame)
+      (global-set-key (kbd "C-x o") 'ace-window))
+
 ;;; init.el ends here
