@@ -11,7 +11,7 @@
  '(nil nil t)
  '(package-selected-packages
    (quote
-    (dumb-jump emms tabbar treemacs try helm-projectile projectile which-key use-package)))
+    (nord-theme dumb-jump emms tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tooltip-mode nil)
@@ -376,5 +376,85 @@
       (setq aw-scope 'frame) ;; was global
       (global-set-key (kbd "C-x O") 'other-frame)
       (global-set-key (kbd "C-x o") 'ace-window))
+
+
+
+;; mu4e settings 
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+(require 'smtpmail)
+
+; smtp
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials
+      '(("mail.example.com" 587 nil nil))
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      smtpmail-debug-info t)
+
+(require 'mu4e)
+
+(setq mu4e-maildir (expand-file-name "~/email/mbsyncmail"))
+
+(setq mu4e-drafts-folder "/Drafts")
+(setq mu4e-sent-folder   "/Sent Items")
+(setq mu4e-trash-folder  "/Trash")
+
+; get mail
+(setq mu4e-get-mail-command "mbsync -a ~/.emacs.d/.mbsyncrc "
+      mu4e-html2text-command "w3m -T text/html"
+      mu4e-update-interval 120
+      mu4e-headers-auto-update t
+      mu4e-compose-signature-auto-include nil)
+
+(setq mu4e-maildir-shortcuts
+      '( ("/INBOX"               . ?i)
+         ("/Sent Items"   . ?s)
+         ("/Trash"       . ?t)
+         ("/Drafts"    . ?d)))
+
+;; show images
+(setq mu4e-show-images t)
+
+;; use imagemagick, if available
+(when (fboundp 'imagemagick-register-types)
+  (imagemagick-register-types))
+
+;; general emacs mail settings; used when composing e-mail
+;; the non-mu4e-* stuff is inherited from emacs/message-mode
+(setq mu4e-reply-to-address "me@example.com"
+    user-mail-address "gargayush341@gmail.com"
+    user-full-name  "Ayush Garg")
+
+;; don't save message to Sent Messages, IMAP takes care of this
+; (setq mu4e-sent-messages-behavior 'delete)
+
+;; spell check
+(add-hook 'mu4e-compose-mode-hook
+        (defun my-do-compose-stuff ()
+           "My settings for message composition."
+           (set-fill-column 72)
+           (flyspell-mode)))
+
+
+
+;; open new untitled buffer in a new frame 
+(defun lunaryorn-new-buffer-frame ()
+  "Create a new frame with a new empty buffer."
+  (interactive)
+  (let ((buffer (generate-new-buffer "untitled")))
+    (set-buffer-major-mode buffer)
+    (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
+(global-set-key (kbd "C-c n") #'lunaryorn-new-buffer-frame)
+
+;;open new untitled buffer in a new window
+(defun new-buffer-window ()
+  "Create a new frame with a new empty buffer."
+  (interactive)
+  (let ((buffer (generate-new-buffer "untitled")))
+    (set-buffer-major-mode buffer)
+    (display-buffer buffer '(display-buffer-pop-up-window . nil))))
+(global-set-key (kbd "C-c w") #'new-buffer-window)
+
 
 ;;; init.el ends here

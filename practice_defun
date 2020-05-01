@@ -1,0 +1,76 @@
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with <open> and enter text in its buffer.
+
+(defun multiply-by-seven (number)
+       "Multiply NUMBER by seven."
+       (* 7 number))
+
+(multiply-by-seven 3)
+
+(defun multiply-by-seven (number)       ; Interactive version.
+       "Multiply NUMBER by seven."
+       (interactive "p")
+       (message "The result is %d" (* 7 number)))
+
+(let ((foo (buffer-name))
+                (bar (buffer-size)))
+            (message
+             "This buffer is %s and has %d characters."
+             foo bar))
+
+
+(defun double_the_value (number)
+  (interactive "p")
+  (message "The result is %d" (* 2 number))
+  )
+
+(defun value_fill_column (number)
+ 
+  (let ((column_value fill-column)
+	(arg_number number))
+    (if (> column_value arg_number)
+	(message "column value %d is greater than the argument %d  passed" column_value arg_number)
+	)
+    )
+  )
+
+(value_fill_column 10)
+
+(buffer-name)
+(buffer-file-name)
+
+(beginning-of-buffer)
+
+(point-max)
+
+(get-buffer (other-buffer))
+
+(goto-char (point-min))
+
+(defun simplified-end-of-buffer ()
+ (interactive)
+ (push-mark)
+ (goto-char (point-max))
+)
+
+(buffer-name)
+(buffer-file-name)
+
+(beginning-of-buffer)
+
+(point-max)
+
+(get-buffer (other-buffer))
+
+(get-buffer "abcd")
+
+(defun check-buffer-exist (buffer-name)
+(if (get-buffer buffer-name)
+    (message "Buffer exist")
+    (progn
+    (get-buffer-create buffer-name)
+    (message "Buffer does not exist, creating the one"))
+    )
+)
+
+;(check-buffer-exist "abcdefghi")
