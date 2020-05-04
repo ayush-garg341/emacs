@@ -73,4 +73,121 @@
     )
 )
 
-;(check-buffer-exist "abcdefghi")
+;;(check-buffer-exist "abcdefghi")
+
+(buffer-list) ;; gives the list of all currently opened  buffers
+
+(kill-buffer "abc") ;; kill the specified buffer
+
+
+(defun test-optional-argument (&optional arg)
+  (interactive "P")
+  (or arg (setq arg 56))
+  (let ((column_value fill-column)
+	(arg-value (prefix-numeric-value arg)))
+    (if (> arg-value column_value)
+	(message "The argument value is %d and greater than column value %d" arg-value column_value)
+      (message "The argument value is %d and smaller than column value %d" arg-value column_value)
+	)
+    )
+  )
+
+(test-optional-argument)
+(test-optional-argument 80)
+
+(beginning-of-line)
+
+(defun first-sixty-chars-buffer ()
+  (interactive)
+  (save-restriction
+    (widen)
+    (save-excursion
+      (message "The first 60 characters are: %s" (buffer-substring-no-properties (point-min) 61))
+      )
+    )
+  )
+
+
+;; car: content of address part in register, old terminology based on hardware
+;; cdr: content of decrement part in register.
+
+(car '(rose violet daisy buttercup))
+(cdr '(rose violet daisy buttercup))
+
+;; Incidentally, in the example, the list of flowers is quoted. If it were not, the Lisp interpreter would try to evaluate the list by calling rose as a function.
+
+(car '((lion tiger cheetah)
+            (gazelle antelope zebra)
+            (whale dolphin seal)))
+
+(cdr '((lion tiger cheetah)
+            (gazelle antelope zebra)
+            (whale dolphin seal)))
+
+;; It is worth saying again that car and cdr are non-destructive.
+
+;; The car and cdr functions are used for splitting lists and are considered fundamental to Lisp. Since they cannot split or gain access to the parts of an array, an array is considered an atom.
+
+;; Conversely, the other fundamental function, cons, can put together or construct a list, but not an array.
+
+(cons 'pine '(fir oak maple))
+(cons 'buttercup ())
+(cons 'daisy '(buttercup))
+(cons 'rose '(violet daisy buttercup))
+
+;; cons is non-destructive since it creates a new list instead of modifying an existing one.
+
+(length )
+(length ())
+(length '(buttercup))
+(length (cons 'violet '(daisy buttercup)))
+
+(cdr '(pine fir oak maple))
+(cdr '(fir oak maple))
+(cdr '(oak maple))
+(cdr '(maple))
+(cdr 'nil)
+(cdr ())
+
+(nthcdr 2 '(pine fir oak maple))
+(nthcdr 0 '(pine fir oak maple))
+(nthcdr 1 '(pine fir oak maple))
+
+;; Return a copy of the list without three elements.
+(nthcdr 3 '(pine fir oak maple))
+
+;; Return a copy lacking all four elements.
+(nthcdr 4 '(pine fir oak maple))
+(nthcdr 5 '(pine fir oak maple))
+
+;;The nth function takes the car of the result returned by nthcdr. It returns the Nth element of the list. The nth function returns a single element of a list and is non-destructive.
+(nth 0 '("one" "two" "three"))
+(nth 1 '("one" "two" "three"))
+
+;; The setcar and setcdr functions set the car or the cdr of a list to a new value. They actually change the original list, unlike car and cdr which leave the original list as it was.
+
+(setq animals '(antelope giraffe lion tiger))
+animals
+
+(setcar animals 'hippopotamus)
+animals
+;; So we can see that setcar did not add a new element to the list as cons would have; it replaced antelope with hippopotamus; it changed the list.
+
+(setq domesticated-animals '(horse cow sheep goat))
+domesticated-animals
+
+(setcdr domesticated-animals '(cat dog))
+domesticated-animals
+
+;; exercise
+(setq birds (cons 'parrot (cons 'crow (cons 'peacock (cons 'pigeon ())))))
+birds
+
+(cons birds birds)
+birds
+
+(setcar birds 'fish)
+birds
+
+(setcdr birds '(dolphin whale octopus))
+birds
