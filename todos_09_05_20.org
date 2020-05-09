@@ -1,0 +1,7 @@
+* Todos Saturday 09-05-20 
+** Task List
+*** checklist [2/4]
+  - [X] Learn some C and write programs
+  - [ ] Learn some CSS and apply
+  - [X] Learn some elisp and code 
+  - [ ] Learn mongoDb second course about performance.

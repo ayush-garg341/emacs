@@ -191,3 +191,54 @@ birds
 
 (setcdr birds '(dolphin whale octopus))
 birds
+
+;; cutting and storing
+;; When text is cut out of a buffer, it is stored on a list. The list that holds the pieces of text is called the kill ring.
+;; The zap-to-char function removes the text in the region between the location of the cursor (i.e., of point) up to and including the next occurrence of a specified character. The text that zap-to-char removes is put in the kill ring; and it can be retrieved from the kill ring by typing C-y (yank).
+;; If the command is given an argument, it removes text through that number of occurrences.
+
+;; (interactive "p\ncZap to char: ")
+;; "p\ncZap to char: " First, and most simply, is the ‘p’. The ‘p’ means that the first argument to the function will be passed the value of a processed prefix. The prefix argument is passed by typing C-u and a number, or M- and a number. The lower case ‘c’ indicates that interactive expects a prompt and that the argument will be a character.
+
+;; (search-forward "target-string"
+;; 		limit-of-search
+;; 		what-to-do-if-search-fails
+;; 		repeat-count)
+
+
+;; progn is a special form that causes each of its arguments to be evaluated in sequence and then returns the value of the last one.
+
+;; It is very important to use the correct option with interactive to make it interactive.
+(defun test-search (str)
+  (interactive "sEnter the string: ")
+  (progn
+    (goto-char(point-min))
+    (setq location (search-forward  str nil  (goto-char(point))))
+    (if location
+	(message "the location is %d" location)
+      )
+    )
+  )
+
+(defun kill-ring-third-element ()
+  (interactive)
+  (setq length-kill-ring (length kill-ring))
+  (if (> length-kill-ring 3)
+      (progn
+	(setq third-element (car (cdr (cdr kill-ring))))
+	(message "The third element of kill ring is %s" third-element)
+	)
+      )
+  )
+
+
+;; list implementation exercise
+(setq flowers '(violet buttercup))
+flowers
+(setq more-flowers (cons 'lily flowers))
+(setq more-flowers (cons 'rose more-flowers))
+more-flowers
+
+(setq fish (car flowers))
+fish
+
