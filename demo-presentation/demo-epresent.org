@@ -1,0 +1,18 @@
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+* Slide 1
+This is the first slide. 
+* Slide 2
+   :PROPERTIES:
+   :REVEAL_EXTRA_ATTR: data-background="#007777"
+   :END:
+   This is second slide.
+** with sub-heading
+** or two
+
+* Slide 3
+   | this | slide | has   |
+   |------+-------+-------|
+   | a    | table | in    |
+   | it   | ok    | fine. |
+   |      |       |       |

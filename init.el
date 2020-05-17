@@ -11,12 +11,10 @@
  '(nil nil t)
  '(package-selected-packages
    (quote
-    (nord-theme dumb-jump emms tabbar treemacs try helm-projectile projectile which-key use-package)))
+    (htmlize ox-reveal epresent nord-theme dumb-jump emms tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(tooltip-mode nil)
- (menu-bar-mode -1)
- (tool-bar-mode -1))
+ '(tooltip-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -456,5 +454,24 @@
     (display-buffer buffer '(display-buffer-pop-up-window . nil))))
 (global-set-key (kbd "C-c w") #'new-buffer-window)
 
+
+;; epresent: Simple presentation mode for emacs org-mode.
+
+
+;; reveal.js to create presentation slides
+;; Reveal.js is a framework for creating good-looking HTML presentations
+;; Org-Reveal exports your Org documents to reveal.js presentations.
+(use-package ox-reveal
+  :ensure t
+  :config
+    (require 'ox-reveal)
+    (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+    (setq org-reveal-mathjax t)
+)
+
+
+;; htmlize -> This package converts the buffer text and the associated decorations to HTML
+(use-package htmlize
+  :ensure t)
 
 ;;; init.el ends here
