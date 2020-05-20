@@ -26,7 +26,24 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 [[file:images/3.png][Trojan Horse Trapdoor.png]]
 
 ** Now the question is how can we reduce the risk of trojan horse trapdoor ?
-    - A. Testing the software
-    - B. Code Review
-    - C. Process Compliance
+    - A. Testing the software (very unlikely)
+    - B. Code Review (Most suitable if we get the code somehow)
+    - C. Process Compliance 
     
+* Malicious Compiler Program
+- UNIX -> Base technology for most of the things run on your phones. IOS and Android are UNIX derivatives.
+- AS is Linux. 
+- Ken Thompson is co-founder of UNIX.
+  - He talked about trojan horses and a way to make them invisible to code review.
+  - He said "You can't trust code that you didn't totally create yourself including all the translation/compilation tools around it".
+** Pictures showing how to hide the trojan horse in code.
+#+ATTR_HTML: :target _blank
+[[file:images/4.png][compiler 1.png]]
+#+ATTR_HTML: :target _blank
+[[file:images/5.png][compiler 2.png]]
+#+ATTR_HTML: :target _blank
+[[file:images/6.png][compiler 3.png]]
+
+** How to reduce the risk of trojan horse now ?
+- Software testing ( again very unlikely to pick that same password )
+- Legal Contracts ( useful, but being a software engineer we want to find it through functionality instead of contracts. )

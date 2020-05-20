@@ -1,0 +1,8 @@
+* Todos Monday 11 May 2020
+** Task list
+*** Checklist [0/0]
+  - [ ] Social sign in implementation in both the projects
+  - [ ] Look at sequelize
+  - [ ] Difference between and cookie, how to generate them and their expirations
+  - [ ] Doubly linked list start and implementation
+  - [ ] Learn next emacs topic

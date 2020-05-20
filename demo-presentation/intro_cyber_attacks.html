@@ -26,19 +26,19 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">INTRODUCTION TO CYBER ATTACKS</h1><h2 class="author">AYUSH GARG</h2><p class="date">Created: 2020-05-20 Wed 08:20</p>
+<section id="sec-title-slide"><h1 class="title">INTRODUCTION TO CYBER ATTACKS</h1><h2 class="author">AYUSH GARG</h2><p class="date">Created: 2020-05-20 Wed 22:25</p>
 </section>
 
 <section>
-<section id="slide-org19ca5db">
-<h2 id="org19ca5db">What is virus?</h2>
+<section id="slide-org042db26">
+<h2 id="org042db26">What is virus?</h2>
 <p>
 That's a piece of malware that gets on a system that looks to be doing one thing, but it actually does something different.
 It's lethal if it can propagate on its own. And here is the idea of WORM.
 </p>
 </section>
-<section id="slide-orgaf1af1f">
-<h3 id="orgaf1af1f">What is WORM propagation or cascading?</h3>
+<section id="slide-org34edd5b">
+<h3 id="org34edd5b">What is WORM propagation or cascading?</h3>
 <ul>
 <li>It includes 3 steps.</li>
 <li>Find a target (Another computer it can connect to, by TCP/IP address)</li>
@@ -55,8 +55,8 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 </section>
 </section>
 <section>
-<section id="slide-org1f82f8a">
-<h2 id="org1f82f8a">What is Trojan Horse?</h2>
+<section id="slide-org5aa4ea6">
+<h2 id="org5aa4ea6">What is Trojan Horse?</h2>
 <ul>
 <li>Something That looks like one thing but it's actually something different.
 <ul>
@@ -73,12 +73,50 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 </p>
 
 </section>
-<section id="slide-org2a80e68">
-<h3 id="org2a80e68">Now the question is how can we reduce the risk of trojan horse trapdoor ?</h3>
+<section id="slide-org1a79f13">
+<h3 id="org1a79f13">Now the question is how can we reduce the risk of trojan horse trapdoor ?</h3>
 <ul>
-<li>A. Testing the software</li>
-<li>B. Code Review</li>
+<li>A. Testing the software (very unlikely)</li>
+<li>B. Code Review (Most suitable if we get the code somehow)</li>
 <li>C. Process Compliance</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1066a27">
+<h2 id="org1066a27">Malicious Compiler Program</h2>
+<ul>
+<li>UNIX -&gt; Base technology for most of the things run on your phones. IOS and Android are UNIX derivatives.</li>
+<li>AS is Linux.</li>
+<li>Ken Thompson is co-founder of UNIX.
+<ul>
+<li>He talked about trojan horses and a way to make them invisible to code review.</li>
+<li>He said "You can't trust code that you didn't totally create yourself including all the translation/compilation tools around it".</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org10792d1">
+<h3 id="org10792d1">Pictures showing how to hide the trojan horse in code.</h3>
+<p target="_blank">
+<a href="images/4.png" target="_blank">compiler 1.png</a>
+</p>
+<p target="_blank">
+<a href="images/5.png" target="_blank">compiler 2.png</a>
+</p>
+<p target="_blank">
+<a href="images/6.png" target="_blank">compiler 3.png</a>
+</p>
+
+</section>
+<section id="slide-org82414a8">
+<h3 id="org82414a8">How to reduce the risk of trojan horse now ?</h3>
+<ul>
+<li>Software testing ( again very unlikely to pick that same password )</li>
+<li>Legal Contracts ( useful, but being a software engineer we want to find it through functionality instead of contracts. )</li>
 
 </ul>
 </section>
