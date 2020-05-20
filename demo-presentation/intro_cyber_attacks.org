@@ -1,0 +1,32 @@
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+TITLE: INTRODUCTION TO CYBER ATTACKS
+#+Author: AYUSH GARG
+#+EMAIL: gargayush341@gmail.com
+
+* What is virus?
+That's a piece of malware that gets on a system that looks to be doing one thing, but it actually does something different.
+It's lethal if it can propagate on its own. And here is the idea of WORM.
+** What is WORM propagation or cascading?
+- It includes 3 steps.
+- Find a target (Another computer it can connect to, by TCP/IP address)
+- Copy worm to target machine. (By exploiting bugs in a software, that allows to copy executables on another machine)
+- Remote execution on target.
+
+- First worm program in 1988, the Morris Worm.
+#+ATTR_HTML: :target _blank
+[[file:./images/1.png][worm propagation.png]]
+
+* What is Trojan Horse?
+- Something That looks like one thing but it's actually something different.
+  - So imagine downloading something to mobile app (may be a game) not realising that the game may be sending out contacts to somebody.   
+#+ATTR_HTML: :target _blank
+[[file:images/2.png][Trapdoor.png]]
+#+ATTR_HTML: :target _blank
+[[file:images/3.png][Trojan Horse Trapdoor.png]]
+
+** Now the question is how can we reduce the risk of trojan horse trapdoor ?
+    - A. Testing the software
+    - B. Code Review
+    - C. Process Compliance
+    

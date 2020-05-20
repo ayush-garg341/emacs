@@ -68,7 +68,7 @@ which means we can refer to our image later with a link like this one
 
 
 * Basic commands re-capture
-1. C-c C-u C-l  => To add the link to a local file that exist on your system.
+1. C-u C-c C-l  => To add the link to a local file that exist on your system.
 2. C-c C-x C-v  => To open the image in inline mode and same to turn it off
 3. C-c C-l      => To add link to web pages
 4. C-c C-o      => Click the link with the mouse, or use C-c C-o to follow it
