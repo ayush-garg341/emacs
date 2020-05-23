@@ -47,3 +47,57 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 ** How to reduce the risk of trojan horse now ?
 - Software testing ( again very unlikely to pick that same password )
 - Legal Contracts ( useful, but being a software engineer we want to find it through functionality instead of contracts. )
+* Classic Unix Security problems
+These are some examples of unix security problems
+** Unix Security 1
+- Each running process contains a used ID number or UID
+- This represents the user who "owns" the process.
+- The UID is the controlling piece of information when the process wants to do something.
+  - Such as opening a file
+  - Or killing another process
+** Unix Security 2
+- Special case
+  - UID=0 disables all checking
+  - "root" user
+- "Holy grail" of attack:
+  - Process with UID 0 running my instructions.
+#+ATTR_HTML: :target _blank
+[[https://kb.iu.edu/d/adwf][find uid of user]]
+
+** Process Permissions 1
+- I can write out a file with any instructions in it that I want
+- But when I run this file, it runs with my UID
+- Because I run it from my shell
+  - Which is already running with my UID
+** Process permissions 2
+- There are a couple of ways around this:
+  - Find an already-running root-user process that will listen to me
+    - Trick it into doing my bidding
+    - e.g., sendmail
+  - Find a setuid root program and trick it by running it in a weird environment
+    - SETUID means that the executable can run under different permissions than the user who has executed it.
+** Process permissions 3
+- SETUID 0 or root means that when the program is run it is as if root ran it - which leaves you open to all the usual security risks of running something at high permission levels - it could potentially do anything to your system - so generally the number of applications that require SETUID should be minimised on a Unix box.
+#+ATTR_HTML: :target _blank
+[[https://docs.oracle.com/cd/E19683-01/816-4883/6mb2joatb/index.html][find files with setuid permissions]]
+
+** /bin/su
+- What does it do?
+  - It prompts the user for a username U and password
+  - Checks the password against /etc/passwd; quits if it's the wrong one
+  - Otherwise, run a shell as user U
+  - To run a shell as user U, the su process must already be running as either U or as UID 0
+  - Thus, /bin/su is owned by root and has the setuid bit enabled:
+    - ls -l /bin/su
+* Typical Unix Kernel Attack
+- One of the main goals of hacker is to break a system.
+- Attack that sort of worked in 90s.
+- It's a way of kind of getting access to the kernel, to the underlying system of Unix.
+- This attack involves features that seems fine on their own but when you combine them, causes problem.
+** Steps include
+- IFS variable -> Internal field separator.
+  - Set IFS variable to include '/'
+  - "/etc/file/" same as "etc file"
+- Find setuid-to-root program.
+  - Now this is a feature in Unix that allows a program running with low previliges to suddenly jump up to get high previlige to do something.
+[[file:images/7.png][setuid.png]]
