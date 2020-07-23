@@ -29,6 +29,9 @@
 ;; stop making back-up files by emacs
 (setq make-backup-files nil)
 
+;; stop making lock-files by emacs
+(setq create-lockfiles nil)
+
 ;; set maximum indentation for description lists
 (setq org-list-description-max-indent 5)
 
