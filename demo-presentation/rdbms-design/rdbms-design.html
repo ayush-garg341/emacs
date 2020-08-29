@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>INTRODUCTION TO RDBMS DESIGN</title>
+<meta name="author" content="(AYUSH GARG)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">INTRODUCTION TO RDBMS DESIGN</h1><h2 class="author">AYUSH GARG</h2><p class="date">Created: 2020-08-29 Sat 12:53</p>
+</section>
+
+<section>
+<section id="slide-orgafc3de6">
+<h2 id="orgafc3de6">DBMS applications.</h2>
+<p>
+Database management system.
+</p>
+<ul>
+<li>Telecom</li>
+<li>Industry (Pharmaceutical)</li>
+<li>Banking System</li>
+<li>Sales</li>
+<li>Airlines</li>
+<li>Education Sector</li>
+<li>Online Shopping</li>
+
+</ul>
+</section>
+<section id="slide-orgd913504">
+<h3 id="orgd913504">Why DBMS, when we have file system to store data ?</h3>
+<ul>
+<li>Data redundancy (duplication of data)</li>
+<li>Data inconsistency (something is changed at one place, need to change at other)</li>
+<li>Data isolation (files may be in different formats)</li>
+<li>Atomicity Issues (all or nothing, difficult to achieve)</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8513b95">
+<h2 id="org8513b95">RDBMS Design Objective</h2>
+<ul>
+<li>Eliminate Data Redundancy</li>
+<li>Ensure Data Integrity and Accuracy</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org53ea8ad">
+<h2 id="org53ea8ad">RDBMS Design Process</h2>
+<ul>
+<li>Purpose of Database (requirement analysis)</li>
+<li>Gather Data, Organize in tables and Specify the Primary Keys</li>
+<li>Create Relationships among tables
+<ul>
+<li>One-to-many</li>
+<li>many-to-many</li>
+<li>one-to-one</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org051e07e">
+<h3 id="org051e07e"></h3>
+<ul>
+<li>Refine and normalize the design
+<ul>
+<li>Normalization</li>
+<li>Integrity Rules
+<ul>
+<li>Entity Integrity Rule</li>
+<li>Referential Integrity Rule</li>
+<li>Business Logic Integrity</li>
+
+</ul></li>
+<li>Column Indexing</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf59e57a">
+<h2 id="orgf59e57a">RDBMS Concepts</h2>
+<p>
+RDBMS stands for relational database management system. 
+</p>
+<ol>
+<li>Table ( collection of data represented in rows and columns )</li>
+<li>Record or Tuple (row of a table)</li>
+<li>Field or Column name or Attribute</li>
+<li>Domain ( set of permitted values for an attribute )</li>
+<li>Instance</li>
+<li>Schema</li>
+<li>Keys (A KEY is a value used to identify a record in a table uniquely.)</li>
+
+</ol>
+
+</section>
+<section id="slide-org93c210a">
+<h3 id="org93c210a">Keys in DBMS - 1</h3>
+<ul>
+<li>Primary Key</li>
+
+</ul>
+<p>
+A primary is a column or set of columns in a table that uniquely identifies tuples (rows) in that table.
+</p>
+
+<ul>
+<li>Super Key</li>
+
+</ul>
+<p>
+A super key is a set of one of more columns (attributes) to uniquely identify rows in a table.
+</p>
+
+<ul>
+<li>Candidate key</li>
+
+</ul>
+<p>
+A super key with no redundant attribute is known as candidate key
+</p>
+
+</section>
+<section id="slide-orgebd3b2c">
+<h3 id="orgebd3b2c">Keys in DBMS - 2</h3>
+<ul>
+<li>Composite Key</li>
+
+</ul>
+<p>
+A key that consists of more than one attribute to uniquely identify rows (also known as records &amp; tuples) in a table is called composite key.
+</p>
+
+<ul>
+<li>Foreign Key</li>
+
+</ul>
+<p>
+Foreign keys are the columns of a table that points to the primary key of another table. They act as a cross-reference between tables.
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb1d638d">
+<h2 id="orgb1d638d">Primary Key</h2>
+<ul>
+<li>The value of primary key should be unique for each row of the table. The column(s) that makes the key cannot contain duplicate values.</li>
+<li>Primary key is not allowed to have null values.</li>
+<li>Primary keys are not necessarily to be a single attribute (column). It can be a set of more than one attributes (columns).
+<ul>
+<li>But we always go for minimal set.</li>
+<li>we should choose more than one columns as primary key only when there is no single column that can uniquely identify the tuple.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org5d587f2">
+<h3 id="org5d587f2">Example-1</h3>
+<ul>
+<li>Order table</li>
+
+</ul>
+<pre  class="example">
+CREATE TABLE Cust_Order (
+    Customer_ID int not null,
+    Product_ID int not null,
+    Order_Quantity int not null,
+    Primary key (Customer_ID, Product_ID)
+);
+
+INSERT INTO Cust_Order (Customer_ID , Product_ID, Order_Quantity )
+VALUES 
+(1011, 9023, 10),
+(1122, 9023, 15),
+(1099, 9031, 20),
+(1177, 9031, 18),
+(1011, 9111, 50)
+
+</pre>
+
+</section>
+<section id="slide-orge8a487a">
+<h3 id="orge8a487a">Example-2</h3>
+<ul>
+<li>Student table</li>
+
+</ul>
+<pre  class="example">
+CREATE TABLE Student (
+    Stu_ID int primary key,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+</pre>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf42e3a8">
+<h2 id="orgf42e3a8">Super Key</h2>
+<ul>
+<li>A super key is a set of one or more attributes (columns), which can uniquely identify a row in a table</li>
+
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">EmpSSN</th>
+<th scope="col" class="org-right">EmpNumber</th>
+<th scope="col" class="org-left">EmpName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">123456789</td>
+<td class="org-right">226</td>
+<td class="org-left">Steve</td>
+</tr>
+
+<tr>
+<td class="org-right">999999321</td>
+<td class="org-right">227</td>
+<td class="org-left">Ajeet</td>
+</tr>
+
+<tr>
+<td class="org-right">888997212</td>
+<td class="org-right">228</td>
+<td class="org-left">Chaitanya</td>
+</tr>
+
+<tr>
+<td class="org-right">777778888</td>
+<td class="org-right">229</td>
+<td class="org-left">Robert</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org3c18b83">
+<h3 id="org3c18b83">Super keys</h3>
+<ul>
+<li>{EmpSSN}</li>
+<li>{EmpNumber}</li>
+<li>{EmpSSN, EmpNumber}</li>
+<li>{EmpSSN, EmpName}</li>
+<li>{EmpSSN, EmpNumber, EmpName}</li>
+<li>{EmpNumber, EmpName}</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgecee819">
+<h2 id="orgecee819">Candidate Keys</h2>
+<p>
+A super key with no redundant attribute is known as candidate key. Candidate keys are selected from the set of super keys, the only thing we take care while selecting candidate key is that the candidate key should not have any redundant attributes. 
+</p>
+</section>
+<section id="slide-orgbad3fb9">
+<h3 id="orgbad3fb9">Candidate Keys</h3>
+<p>
+For the prevoius table:
+</p>
+<ul>
+<li>{EmpSSN}</li>
+<li>{EmpNumber}</li>
+
+</ul>
+
+<p>
+Note: A primary key is selected from the set of candidate keys. That means we can either have EmpSSN or EmpNumber as primary key.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org9c9b635">
+<h2 id="org9c9b635">Foreign Key</h2>
+<p>
+Foreign keys are the columns of a table that points to the primary key of another table. They act as a cross-reference between tables.
+</p>
+
+</section>
+<section id="slide-org21d82bc">
+<h3 id="org21d82bc">Example</h3>
+<pre  class="example">
+CREATE TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL,
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),       
+   PRIMARY KEY (ID)
+);
+
+CREATE TABLE ORDERS (
+   ID          INT        NOT NULL,
+   DATE        DATETIME, 
+   CUSTOMER_ID INT references CUSTOMERS(ID),
+   AMOUNT     double,
+   PRIMARY KEY (ID)
+);
+</pre>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8a22459">
+<h2 id="org8a22459">Composite key</h2>
+<p>
+A composite key is a candidate key that consists of two or more attributes (table columns) that together uniquely identify an entity occurrence (table row). 
+Note: Any key such as super key, primary key, candidate key etc. can be called composite key if it has more than one attributes.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb8d1c9d">
+<h2 id="orgb8d1c9d">Alternate Key</h2>
+<p>
+A table can have multiple candidate keys. Among these candidate keys, only one key gets selected as primary key, the remaining keys are known as alternative or secondary keys.
+</p>
+
+<p>
+ex: EmpNumber
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdd9523f">
+<h2 id="orgdd9523f">Normalization</h2>
+<p>
+Normalization is a systematic approach of decomposing tables to eliminate data redundancy(repetition) and undesirable characteristics like Insertion, Update and Deletion Anomalies.
+</p>
+<ul>
+<li>1NF (First Normal Form)</li>
+<li>2NF (Second Normal Form)</li>
+<li>3NF (Third Normal Form)</li>
+<li>BCNF (Boyce-Codd Normal Form)</li>
+<li>4NF (Fourth Normal Form)</li>
+<li>5NF (Fifth Normal Form)</li>
+<li>6NF (Sixth Normal Form)</li>
+
+</ul>
+
+</section>
+<section id="slide-org9ce4521">
+<h3 id="org9ce4521">1NF (First Normal Form) Rules</h3>
+<ul>
+<li>Each table cell should contain a single value.</li>
+<li>Each record needs to be unique.</li>
+
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">empId</th>
+<th scope="col" class="org-left">empName</th>
+<th scope="col" class="org-left">empAddress</th>
+<th scope="col" class="org-left">empMobile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">101</td>
+<td class="org-left">Herschel</td>
+<td class="org-left">New Delhi</td>
+<td class="org-left">8912312390</td>
+</tr>
+
+<tr>
+<td class="org-right">102</td>
+<td class="org-left">Jon</td>
+<td class="org-left">Kanpur</td>
+<td class="org-left">8812121212 9900012222</td>
+</tr>
+
+<tr>
+<td class="org-right">103</td>
+<td class="org-left">Ron</td>
+<td class="org-left">Chennai</td>
+<td class="org-left">7778881212</td>
+</tr>
+
+<tr>
+<td class="org-right">104</td>
+<td class="org-left">Lester</td>
+<td class="org-left">Bangalore</td>
+<td class="org-left">9990000123 8123450987</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org24ff7b5">
+<h4 id="org24ff7b5">Explaination</h4>
+<p>
+Two employees (Jon &amp; Lester) are having two mobile numbers so the company stored them in the same field
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">empId</th>
+<th scope="col" class="org-left">empName</th>
+<th scope="col" class="org-left">empAddress</th>
+<th scope="col" class="org-right">empMobile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">101</td>
+<td class="org-left">Herschel</td>
+<td class="org-left">New Delhi</td>
+<td class="org-right">8912312390</td>
+</tr>
+
+<tr>
+<td class="org-right">102</td>
+<td class="org-left">Jon</td>
+<td class="org-left">Kanpur</td>
+<td class="org-right">8812121212</td>
+</tr>
+
+<tr>
+<td class="org-right">102</td>
+<td class="org-left">Jon</td>
+<td class="org-left">Kanpur</td>
+<td class="org-right">9900012222</td>
+</tr>
+
+<tr>
+<td class="org-right">103</td>
+<td class="org-left">Ron</td>
+<td class="org-left">Chennai</td>
+<td class="org-right">7778881212</td>
+</tr>
+
+<tr>
+<td class="org-right">104</td>
+<td class="org-left">Lester</td>
+<td class="org-left">Bangalore</td>
+<td class="org-right">9990000123</td>
+</tr>
+
+<tr>
+<td class="org-right">104</td>
+<td class="org-left">Lester</td>
+<td class="org-left">Bangalore</td>
+<td class="org-right">8123450987</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+<section id="slide-orgbfc819f">
+<h3 id="orgbfc819f">2NF (Second Normal Form) Rules</h3>
+<ul>
+<li>Rule 1- Be in 1NF</li>
+<li>Rule 2- No non-prime attribute is dependent on the proper subset of any candidate key of table.</li>
+<li>Non-Prime Attribute :- An attribute that is not part of any candidate key is known as non-prime attribute.</li>
+
+</ul>
+</section>
+<section id="slide-org1a964c2">
+<h4 id="org1a964c2">Example</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">teacherId</th>
+<th scope="col" class="org-left">subject</th>
+<th scope="col" class="org-right">teacherAge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">111</td>
+<td class="org-left">Maths</td>
+<td class="org-right">38</td>
+</tr>
+
+<tr>
+<td class="org-right">111</td>
+<td class="org-left">Physics</td>
+<td class="org-right">38</td>
+</tr>
+
+<tr>
+<td class="org-right">222</td>
+<td class="org-left">Biology</td>
+<td class="org-right">38</td>
+</tr>
+
+<tr>
+<td class="org-right">333</td>
+<td class="org-left">Physics</td>
+<td class="org-right">40</td>
+</tr>
+
+<tr>
+<td class="org-right">333</td>
+<td class="org-left">Chemistry</td>
+<td class="org-right">40</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Candidate Keys: {teacherId, subject}
+</p>
+
+<p>
+Non prime attribute: teacherAge
+</p>
+
+</section>
+<section id="slide-orgc5e6009">
+<h4 id="orgc5e6009">Explaination</h4>
+<ul>
+<li>The table is in 1 NF because each attribute has atomic values.</li>
+<li>However, it is not in 2NF because non prime attribute teacherAge is dependent on teacherId alone which is a proper subset of candidate key.</li>
+
+</ul>
+
+</section>
+<section id="slide-org8442868">
+<h4 id="org8442868">Split the table into two</h4>
+<ul>
+<li>Table 1</li>
+
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">teacherId</th>
+<th scope="col" class="org-right">teacherAge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">111</td>
+<td class="org-right">38</td>
+</tr>
+
+<tr>
+<td class="org-right">222</td>
+<td class="org-right">38</td>
+</tr>
+
+<tr>
+<td class="org-right">333</td>
+<td class="org-right">40</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+<section id="slide-org2b7641c">
+<h4 id="org2b7641c">Table 2</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">teacherId</th>
+<th scope="col" class="org-left">subject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">111</td>
+<td class="org-left">Maths</td>
+</tr>
+
+<tr>
+<td class="org-right">111</td>
+<td class="org-left">Physics</td>
+</tr>
+
+<tr>
+<td class="org-right">222</td>
+<td class="org-left">Biology</td>
+</tr>
+
+<tr>
+<td class="org-right">333</td>
+<td class="org-left">Physics</td>
+</tr>
+
+<tr>
+<td class="org-right">333</td>
+<td class="org-left">Chemistry</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+<section id="slide-org997b127">
+<h3 id="org997b127">3NF (Third Normal Form) Rules</h3>
+<ul>
+<li>Rule 1- Table must be in 2NF</li>
+<li>Rule 2- Transitive functional dependency of non-prime attribute on any super key should be removed. In other words the non-key columns are independent of each others. In other words, the non-key columns are dependent on primary key, only on the primary key and nothing else.</li>
+
+</ul>
+</section>
+<section id="slide-org959eddc">
+<h4 id="org959eddc">Transitive Functional Dependency</h4>
+<p>
+X -&gt; Z is a transitive dependency if the following three functional dependencies hold true:
+</p>
+<ul>
+<li>X-&gt;Y</li>
+<li>Y does not -&gt; X</li>
+<li>Y-&gt;Z</li>
+
+</ul>
+
+<p>
+example:-
+</p>
+<ul>
+<li>{Book} -&gt;{Author} (if we know the book, we knows the author name)</li>
+<li>{Author} does not -&gt;{Book}</li>
+<li>{Author} -&gt; {authorAge}</li>
+
+</ul>
+
+</section>
+<section id="slide-org5352792">
+<h4 id="org5352792">Example</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">empId</th>
+<th scope="col" class="org-left">empName</th>
+<th scope="col" class="org-right">empZip</th>
+<th scope="col" class="org-left">empState</th>
+<th scope="col" class="org-left">empCity</th>
+<th scope="col" class="org-left">empDistrict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1001</td>
+<td class="org-left">John</td>
+<td class="org-right">282005</td>
+<td class="org-left">UP</td>
+<td class="org-left">Agra</td>
+<td class="org-left">Dayal Bagh</td>
+</tr>
+
+<tr>
+<td class="org-right">1002</td>
+<td class="org-left">Ajeet</td>
+<td class="org-right">222008</td>
+<td class="org-left">TN</td>
+<td class="org-left">Chennai</td>
+<td class="org-left">M-city</td>
+</tr>
+
+<tr>
+<td class="org-right">1006</td>
+<td class="org-left">Michael</td>
+<td class="org-right">282007</td>
+<td class="org-left">TN</td>
+<td class="org-left">Chennai</td>
+<td class="org-left">Urrapkkam</td>
+</tr>
+
+<tr>
+<td class="org-right">1101</td>
+<td class="org-left">Lilly</td>
+<td class="org-right">292008</td>
+<td class="org-left">UK</td>
+<td class="org-left">Pauri</td>
+<td class="org-left">Bhagwan</td>
+</tr>
+
+<tr>
+<td class="org-right">1201</td>
+<td class="org-left">Steve</td>
+<td class="org-right">222999</td>
+<td class="org-left">MP</td>
+<td class="org-left">Gwalior</td>
+<td class="org-left">Ratan</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org4b6ff4c">
+<h4 id="org4b6ff4c">Explaination</h4>
+<ul>
+<li>Super keys: {empId}, {empId, empName}, {empId, empName, empZip}…so on</li>
+<li>Candidate Keys: {empId}</li>
+<li>Non-prime attributes: all attributes except empId are non-prime as they are not part of any candidate keys.</li>
+<li>Here, empState, empCity &amp; empDistrict dependent on empZip. And, empZip is dependent on empId that makes non-prime attributes (empState, empCity &amp; empDistrict) transitively dependent on super key (empId). This violates the rule of 3NF.</li>
+
+</ul>
+
+</section>
+<section id="slide-orga29c9ad">
+<h4 id="orga29c9ad">Solution</h4>
+<ul>
+<li>To make this table complies with 3NF we have to break the table into two tables to remove the transitive dependency:</li>
+
+</ul>
+</section>
+<section id="slide-orgc1b2cbd">
+<h4 id="orgc1b2cbd">Table-1 Employee Table</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">empId</th>
+<th scope="col" class="org-left">empName</th>
+<th scope="col" class="org-right">empZip</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1001</td>
+<td class="org-left">John</td>
+<td class="org-right">282005</td>
+</tr>
+
+<tr>
+<td class="org-right">1002</td>
+<td class="org-left">Ajeet</td>
+<td class="org-right">222008</td>
+</tr>
+
+<tr>
+<td class="org-right">1006</td>
+<td class="org-left">Michael</td>
+<td class="org-right">282007</td>
+</tr>
+
+<tr>
+<td class="org-right">1101</td>
+<td class="org-left">Lilly</td>
+<td class="org-right">292008</td>
+</tr>
+
+<tr>
+<td class="org-right">1201</td>
+<td class="org-left">Steve</td>
+<td class="org-right">222999</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org789dbe2">
+<h4 id="org789dbe2">Table-2 Employee Zip</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">empZip</th>
+<th scope="col" class="org-left">empState</th>
+<th scope="col" class="org-left">empCity</th>
+<th scope="col" class="org-left">empDistrict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">282005</td>
+<td class="org-left">UP</td>
+<td class="org-left">Agra</td>
+<td class="org-left">Dayal Bagh</td>
+</tr>
+
+<tr>
+<td class="org-right">222008</td>
+<td class="org-left">TN</td>
+<td class="org-left">Chennai</td>
+<td class="org-left">M-city</td>
+</tr>
+
+<tr>
+<td class="org-right">282007</td>
+<td class="org-left">TN</td>
+<td class="org-left">Chennai</td>
+<td class="org-left">Urrapkkam</td>
+</tr>
+
+<tr>
+<td class="org-right">292008</td>
+<td class="org-left">UK</td>
+<td class="org-left">Pauri</td>
+<td class="org-left">Bhagwan</td>
+</tr>
+
+<tr>
+<td class="org-right">222999</td>
+<td class="org-left">MP</td>
+<td class="org-left">Gwalior</td>
+<td class="org-left">Ratan</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org5a01645">
+<h2 id="org5a01645">Transaction Management</h2>
+<ul>
+<li>A transaction is a set of logically related operations.</li>
+<li>ex: transferring money from one account to another</li>
+
+</ul>
+
+</section>
+<section id="slide-orgb8c42de">
+<h3 id="orgb8c42de">Problem</h3>
+<ul>
+<li>The main problem that can happen during a transaction is that the transaction can fail before finishing the all the operations in the set. This can happen due to power failure, system crash etc. This is a serious problem that can leave database in an inconsistent state.</li>
+
+</ul>
+
+</section>
+<section id="slide-org5f5b6be">
+<h4 id="org5f5b6be">Solution</h4>
+<ul>
+<li>Commit: If all the operations in a transaction are completed successfully then commit those changes to the database permanently.</li>
+<li>Rollback: If any of the operation fails then rollback all the changes done by previous operations.</li>
+<li>But they are not sufficient when two transactions are running concurrently. To handle those problems we need to understand database ACID properties.</li>
+
+</ul>
+
+</section>
+<section id="slide-org02f6cb5">
+<h3 id="org02f6cb5">ACID Properties</h3>
+<div class="outline-text-3" id="text-org02f6cb5">
+</div>
+</section>
+<section id="slide-org94a5a9d">
+<h4 id="org94a5a9d"></h4>
+<ul>
+<li>Atomicity: This property ensures that either all the operations of a transaction reflect in database or none.</li>
+<li>Consistency:  To preserve the consistency of database, the execution of transaction should take place in isolation (that means no other transaction should run concurrently when there is a transaction already running).</li>
+
+</ul>
+</section>
+<section id="slide-orgfa4fb07">
+<h4 id="orgfa4fb07"></h4>
+<ul>
+<li>Isolation: For every pair of transactions, one transaction should start execution only when the other finished execution.</li>
+<li>Durability: Once a transaction completes successfully, the changes it has made into the database should be permanent even if there is a system failure.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9dd8646">
+<h2 id="org9dd8646">Constraints in DBMS</h2>
+<p>
+Constraints enforce limits to the data or type of data that can be inserted/updated/deleted from a table. The whole purpose of constraints is to maintain the data integrity during an update/delete/insert into a table.
+</p>
+</section>
+<section id="slide-orgfabc5a1">
+<h3 id="orgfabc5a1">Some common constraints</h3>
+<ul>
+<li>Not Null</li>
+<li>Unique</li>
+<li>Default</li>
+<li>Check</li>
+<li>Key Constraints – PRIMARY KEY, FOREIGN KEY</li>
+<li>Domain constraints</li>
+<li>Mapping constraints</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd78f4e3">
+<h2 id="orgd78f4e3">Cardinality</h2>
+<p>
+In terms of data models, cardinality refers to the relationship between two tables. Relationship can be of four types as we have already seen in Entity relationship guide:
+</p>
+<ul>
+<li>One to one (person-passport)</li>
+<li>One to many (customer-order)</li>
+<li>Many to one (student-college)</li>
+<li>Many to many (student-project)</li>
+
+</ul>
+
+</section>
+<section id="slide-orgc1b8fff">
+<h3 id="orgc1b8fff">In context of query optimization</h3>
+<p>
+In terms of query, the cardinality refers to the uniqueness of a column in a table. The column with all unique values would be having the high cardinality and the column with all duplicate values would be having the low cardinality. These cardinality scores helps in query optimization.
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

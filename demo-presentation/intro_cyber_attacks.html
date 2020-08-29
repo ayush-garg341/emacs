@@ -26,19 +26,19 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">INTRODUCTION TO CYBER ATTACKS</h1><h2 class="author">AYUSH GARG</h2><p class="date">Created: 2020-05-23 Sat 11:11</p>
+<section id="sec-title-slide"><h1 class="title">INTRODUCTION TO CYBER ATTACKS</h1><h2 class="author">AYUSH GARG</h2><p class="date">Created: 2020-08-28 Fri 07:38</p>
 </section>
 
 <section>
-<section id="slide-org9cc338c">
-<h2 id="org9cc338c">What is virus?</h2>
+<section id="slide-org19aaf27">
+<h2 id="org19aaf27">What is virus?</h2>
 <p>
 That's a piece of malware that gets on a system that looks to be doing one thing, but it actually does something different.
 It's lethal if it can propagate on its own. And here is the idea of WORM.
 </p>
 </section>
-<section id="slide-org54e00db">
-<h3 id="org54e00db">What is WORM propagation or cascading?</h3>
+<section id="slide-orgb8544e5">
+<h3 id="orgb8544e5">What is WORM propagation or cascading?</h3>
 <ul>
 <li>It includes 3 steps.</li>
 <li>Find a target (Another computer it can connect to, by TCP/IP address)</li>
@@ -49,14 +49,14 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 
 </ul>
 <p target="_blank">
-<a href="./images/1.png" target="_blank">worm propagation.png</a>
+q<a href="./images/1.png" target="_blank">worm propagation.png</a>
+1
 </p>
-
 </section>
 </section>
 <section>
-<section id="slide-org91a6a92">
-<h2 id="org91a6a92">What is Trojan Horse?</h2>
+<section id="slide-org19abd82">
+<h2 id="org19abd82">What is Trojan Horse?</h2>
 <ul>
 <li>Something That looks like one thing but it's actually something different.
 <ul>
@@ -73,8 +73,8 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 </p>
 
 </section>
-<section id="slide-org9d32c5b">
-<h3 id="org9d32c5b">Now the question is how can we reduce the risk of trojan horse trapdoor ?</h3>
+<section id="slide-org5e02ee3">
+<h3 id="org5e02ee3">Now the question is how can we reduce the risk of trojan horse trapdoor ?</h3>
 <ul>
 <li>A. Testing the software (very unlikely)</li>
 <li>B. Code Review (Most suitable if we get the code somehow)</li>
@@ -85,8 +85,8 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 </section>
 </section>
 <section>
-<section id="slide-org734e085">
-<h2 id="org734e085">Malicious Compiler Program</h2>
+<section id="slide-org4164bf0">
+<h2 id="org4164bf0">Malicious Compiler Program</h2>
 <ul>
 <li>UNIX -&gt; Base technology for most of the things run on your phones. IOS and Android are UNIX derivatives.</li>
 <li>AS is Linux.</li>
@@ -99,8 +99,8 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 
 </ul>
 </section>
-<section id="slide-org5b8aa93">
-<h3 id="org5b8aa93">Pictures showing how to hide the trojan horse in code.</h3>
+<section id="slide-org62477c5">
+<h3 id="org62477c5">Pictures showing how to hide the trojan horse in code.</h3>
 <p target="_blank">
 <a href="images/4.png" target="_blank">compiler 1.png</a>
 </p>
@@ -112,8 +112,8 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 </p>
 
 </section>
-<section id="slide-org664c769">
-<h3 id="org664c769">How to reduce the risk of trojan horse now ?</h3>
+<section id="slide-orga32dae2">
+<h3 id="orga32dae2">How to reduce the risk of trojan horse now ?</h3>
 <ul>
 <li>Software testing ( again very unlikely to pick that same password )</li>
 <li>Legal Contracts ( useful, but being a software engineer we want to find it through functionality instead of contracts. )</li>
@@ -122,14 +122,14 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 </section>
 </section>
 <section>
-<section id="slide-org3679bd0">
-<h2 id="org3679bd0">Classic Unix Security problems</h2>
+<section id="slide-org234965a">
+<h2 id="org234965a">Classic Unix Security problems</h2>
 <p>
 These are some examples of unix security problems
 </p>
 </section>
-<section id="slide-org2fef303">
-<h3 id="org2fef303">Unix Security 1</h3>
+<section id="slide-org05318a1">
+<h3 id="org05318a1">Unix Security 1</h3>
 <ul>
 <li>Each running process contains a used ID number or UID</li>
 <li>This represents the user who "owns" the process.</li>
@@ -142,8 +142,8 @@ These are some examples of unix security problems
 
 </ul>
 </section>
-<section id="slide-orgfbbef0f">
-<h3 id="orgfbbef0f">Unix Security 2</h3>
+<section id="slide-org6e5139a">
+<h3 id="org6e5139a">Unix Security 2</h3>
 <ul>
 <li>Special case
 <ul>
@@ -163,8 +163,8 @@ These are some examples of unix security problems
 </p>
 
 </section>
-<section id="slide-org14c9bd7">
-<h3 id="org14c9bd7">Process Permissions 1</h3>
+<section id="slide-org9291b72">
+<h3 id="org9291b72">Process Permissions 1</h3>
 <ul>
 <li>I can write out a file with any instructions in it that I want</li>
 <li>But when I run this file, it runs with my UID</li>
@@ -176,8 +176,8 @@ These are some examples of unix security problems
 
 </ul>
 </section>
-<section id="slide-org9e47e2c">
-<h3 id="org9e47e2c">Process permissions 2</h3>
+<section id="slide-org0b18e03">
+<h3 id="org0b18e03">Process permissions 2</h3>
 <ul>
 <li>There are a couple of ways around this:
 <ul>
@@ -197,8 +197,8 @@ These are some examples of unix security problems
 
 </ul>
 </section>
-<section id="slide-org9635943">
-<h3 id="org9635943">Process permissions 3</h3>
+<section id="slide-org0263dd3">
+<h3 id="org0263dd3">Process permissions 3</h3>
 <ul>
 <li>SETUID 0 or root means that when the program is run it is as if root ran it - which leaves you open to all the usual security risks of running something at high permission levels - it could potentially do anything to your system - so generally the number of applications that require SETUID should be minimised on a Unix box.</li>
 
@@ -208,8 +208,8 @@ These are some examples of unix security problems
 </p>
 
 </section>
-<section id="slide-org8952fad">
-<h3 id="org8952fad">/bin/su</h3>
+<section id="slide-org82a949e">
+<h3 id="org82a949e">/bin/su</h3>
 <ul>
 <li>What does it do?
 <ul>
@@ -229,8 +229,8 @@ These are some examples of unix security problems
 </section>
 </section>
 <section>
-<section id="slide-orgfd9af08">
-<h2 id="orgfd9af08">Typical Unix Kernel Attack</h2>
+<section id="slide-org30aef19">
+<h2 id="org30aef19">Typical Unix Kernel Attack</h2>
 <ul>
 <li>One of the main goals of hacker is to break a system.</li>
 <li>Attack that sort of worked in 90s.</li>
@@ -239,8 +239,8 @@ These are some examples of unix security problems
 
 </ul>
 </section>
-<section id="slide-org38ee7c0">
-<h3 id="org38ee7c0">Steps include</h3>
+<section id="slide-org2ff109f">
+<h3 id="org2ff109f">Steps include</h3>
 <ul>
 <li>IFS variable -&gt; Internal field separator.
 <ul>

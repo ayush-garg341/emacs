@@ -15,8 +15,8 @@ It's lethal if it can propagate on its own. And here is the idea of WORM.
 
 - First worm program in 1988, the Morris Worm.
 #+ATTR_HTML: :target _blank
-[[file:./images/1.png][worm propagation.png]]
-
+q[[file:./images/1.png][worm propagation.png]]
+1
 * What is Trojan Horse?
 - Something That looks like one thing but it's actually something different.
   - So imagine downloading something to mobile app (may be a game) not realising that the game may be sending out contacts to somebody.   

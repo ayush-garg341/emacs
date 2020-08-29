@@ -1,0 +1,387 @@
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+TITLE: INTRODUCTION TO RDBMS DESIGN
+#+Author: AYUSH GARG
+#+EMAIL: gargayush341@gmail.com
+
+* DBMS applications.
+Database management system.
+- Telecom
+- Industry (Pharmaceutical)
+- Banking System
+- Sales
+- Airlines
+- Education Sector
+- Online Shopping
+** Why DBMS, when we have file system to store data ?
+- Data redundancy (duplication of data)
+- Data inconsistency (something is changed at one place, need to change at other)
+- Data isolation (files may be in different formats)
+- Atomicity Issues (all or nothing, difficult to achieve)
+
+
+# * Types of DBMS architecture
+# - Single tier architecture
+# - Two tier architecture
+# - Three tier architecture
+
+# ** Single tier architecture
+# In this type of architecture, the database is readily available on the client machine, any request made by client doesn’t require a network connection to perform the action on the database.
+
+# ** Two tier architecture
+# The Database system is present at the server machine and the DBMS application is present at the client machine
+# The application connection interface such as JDBC, ODBC are used for the interaction between server and client.
+ 
+# ** Three tier architecture
+# In three-tier architecture, another layer is present between the client machine and server machine. In this architecture, the client application doesn’t communicate directly with the database systems present at the server machine, rather the client application communicates with server application and the server application internally communicates with the database system present at the server.
+
+# * Three level architecture in detail
+# - External Level
+# - Conceptual Level
+# - Internal Level
+
+# ** External Level
+# It is also called view level. The reason this level is called “view” is because several users can view their desired data from this level which is internally fetched from database with the help of conceptual and internal level mapping.
+# The user doesn’t need to know the database schema details such as data structure, table definition etc. user is only concerned about data which is what returned back to the view level after it has been fetched from database (present at the internal level).
+
+# ** Conceptual Level
+# It is also called logical level. The whole design of the database such as relationship among data, schema of data etc. are described in this level.
+# Database constraints and security are also implemented in this level of architecture. This level is maintained by DBA (database administrator).
+
+# ** Internal Level
+# This level is also known as physical level. This level describes how the data is actually stored in the storage devices. This level is also responsible for allocating space to the data. This is the lowest level of the architecture.
+
+# * Data Models in DBMS
+# Data Model is a logical structure of Database. It describes the design of database to reflect entities, attributes, relationship among data, constrains etc.
+# ** Object based logical models
+# Describe data at the conceptual and view levels
+# - E-R model
+# - Object oriented model
+
+# ** Record based logical models
+# These models specify logical structure of database with records, fields and attributes.
+# - Relational Model
+# In relational model, the data and relationships are represented by collection of inter-related tables. Each table is a group of column and rows, where column represents attribute of an entity and rows represents records.
+# - Hierarchical Model
+# Rarely used, one to many relationship.
+# - Network Model
+# Have a graph like structure instead of tree.
+
+# ** Physical Data Models
+# These models describe data at the lowest level of abstraction.
+
+
+* RDBMS Design Objective
+- Eliminate Data Redundancy
+- Ensure Data Integrity and Accuracy
+
+* RDBMS Design Process
+- Purpose of Database (requirement analysis)
+- Gather Data, Organize in tables and Specify the Primary Keys
+- Apply constraints on field names
+- Create Relationships among tables
+  - One-to-many
+  - many-to-many
+  - one-to-one
+** 
+- Refine and normalize the design
+  - Normalization
+  - Integrity Rules
+    - Entity Integrity Rule
+    - Referential Integrity Rule
+    - Business Logic Integrity
+  - Column Indexing
+    
+
+* RDBMS Concepts
+RDBMS stands for relational database management system. 
+1. Table ( collection of data represented in rows and columns )
+2. Record or Tuple (row of a table)
+3. Field or Column name or Attribute
+4. Domain ( set of permitted values for an attribute )
+5. Instance
+6. Schema
+7. Keys (A KEY is a value used to identify a record in a table uniquely.)
+
+** Keys in DBMS - 1
+- Primary Key
+A primary is a column or set of columns in a table that uniquely identifies tuples (rows) in that table.
+
+- Super Key
+A super key is a set of one of more columns (attributes) to uniquely identify rows in a table.
+
+- Candidate key
+A super key with no redundant attribute is known as candidate key
+
+** Keys in DBMS - 2
+
+- Composite Key
+A key that consists of more than one attribute to uniquely identify rows (also known as records & tuples) in a table is called composite key.
+
+- Foreign Key
+Foreign keys are the columns of a table that points to the primary key of another table. They act as a cross-reference between tables.
+
+
+
+* Primary Key
+- The value of primary key should be unique for each row of the table. The column(s) that makes the key cannot contain duplicate values.
+- Primary key is not allowed to have null values.
+- Primary keys are not necessarily to be a single attribute (column). It can be a set of more than one attributes (columns).
+  - But we always go for minimal set.
+  - we should choose more than one columns as primary key only when there is no single column that can uniquely identify the tuple.
+** Example-1
+- Order table
+#+begin_src
+CREATE TABLE Cust_Order (
+    Customer_ID int not null,
+    Product_ID int not null,
+    Order_Quantity int not null,
+    Primary key (Customer_ID, Product_ID)
+);
+
+INSERT INTO Cust_Order (Customer_ID , Product_ID, Order_Quantity )
+VALUES 
+(1011, 9023, 10),
+(1122, 9023, 15),
+(1099, 9031, 20),
+(1177, 9031, 18),
+(1011, 9111, 50)
+
+#+end_src
+
+** Example-2
+- Student table
+#+begin_src
+CREATE TABLE Student (
+    Stu_ID int primary key,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+#+end_src
+
+
+* Super Key
+- A super key is a set of one or more attributes (columns), which can uniquely identify a row in a table
+|   EmpSSN  | EmpNumber  | EmpName   |
+|-----------+------------+-----------|
+| 123456789 |        226 | Steve     |
+| 999999321 |        227 | Ajeet     |
+| 888997212 |        228 | Chaitanya |
+| 777778888 |        229 | Robert    |
+
+** Super keys
+- {EmpSSN}
+- {EmpNumber}
+- {EmpSSN, EmpNumber}
+- {EmpSSN, EmpName}
+- {EmpSSN, EmpNumber, EmpName}
+- {EmpNumber, EmpName}
+
+* Candidate Keys
+A super key with no redundant attribute is known as candidate key. Candidate keys are selected from the set of super keys, the only thing we take care while selecting candidate key is that the candidate key should not have any redundant attributes. 
+** Candidate Keys
+For the prevoius table:
+- {EmpSSN}
+- {EmpNumber}
+
+Note: A primary key is selected from the set of candidate keys. That means we can either have EmpSSN or EmpNumber as primary key.
+
+* Foreign Key
+Foreign keys are the columns of a table that points to the primary key of another table. They act as a cross-reference between tables.
+
+** Example
+
+#+begin_src
+CREATE TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL,
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),       
+   PRIMARY KEY (ID)
+);
+
+CREATE TABLE ORDERS (
+   ID          INT        NOT NULL,
+   DATE        DATETIME, 
+   CUSTOMER_ID INT references CUSTOMERS(ID),
+   AMOUNT     double,
+   PRIMARY KEY (ID)
+);
+#+end_src
+
+
+* Composite key
+A composite key is a candidate key that consists of two or more attributes (table columns) that together uniquely identify an entity occurrence (table row). 
+Note: Any key such as super key, primary key, candidate key etc. can be called composite key if it has more than one attributes.
+
+* Alternate Key
+A table can have multiple candidate keys. Among these candidate keys, only one key gets selected as primary key, the remaining keys are known as alternative or secondary keys.
+
+ex: EmpNumber
+
+* Normalization
+Normalization is a systematic approach of decomposing tables to eliminate data redundancy(repetition) and undesirable characteristics like Insertion, Update and Deletion Anomalies.
+- 1NF (First Normal Form)
+- 2NF (Second Normal Form)
+- 3NF (Third Normal Form)
+- BCNF (Boyce-Codd Normal Form)
+- 4NF (Fourth Normal Form)
+- 5NF (Fifth Normal Form)
+- 6NF (Sixth Normal Form)
+
+** 1NF (First Normal Form) Rules
+- Each table cell should contain a single value.
+- Each record needs to be unique.
+| empId | empName  | empAddress | empMobile             |
+|-------+----------+------------+-----------------------|
+|   101 | Herschel | New Delhi  | 8912312390            |
+|   102 | Jon      | Kanpur     | 8812121212 9900012222 |
+|   103 | Ron      | Chennai    | 7778881212            |
+|   104 | Lester   | Bangalore  | 9990000123 8123450987 |
+
+*** Explaination
+Two employees (Jon & Lester) are having two mobile numbers so the company stored them in the same field
+| empId | empName  | empAddress |  empMobile |
+|-------+----------+------------+------------|
+|   101 | Herschel | New Delhi  | 8912312390 |
+|   102 | Jon      | Kanpur     | 8812121212 |
+|   102 | Jon      | Kanpur     | 9900012222 |
+|   103 | Ron      | Chennai    | 7778881212 |
+|   104 | Lester   | Bangalore  | 9990000123 |
+|   104 | Lester   | Bangalore  | 8123450987 |
+|       |          |            |            |
+
+
+** 2NF (Second Normal Form) Rules
+- Rule 1- Be in 1NF
+- Rule 2- No non-prime attribute is dependent on the proper subset of any candidate key of table.
+- Non-Prime Attribute :- An attribute that is not part of any candidate key is known as non-prime attribute.
+*** Example
+| teacherId | subject   | teacherAge |
+|-----------+-----------+------------|
+|       111 | Maths     |         38 |
+|       111 | Physics   |         38 |
+|       222 | Biology   |         38 |
+|       333 | Physics   |         40 |
+|       333 | Chemistry |         40 |
+
+Candidate Keys: {teacherId, subject}
+
+Non prime attribute: teacherAge
+
+*** Explaination
+- The table is in 1 NF because each attribute has atomic values.
+- However, it is not in 2NF because non prime attribute teacherAge is dependent on teacherId alone which is a proper subset of candidate key.
+
+*** Split the table into two
+- Table 1
+| teacherId | teacherAge |
+|-----------+------------|
+|       111 |         38 |
+|       222 |         38 |
+|       333 |         40 |
+
+
+*** Table 2
+| teacherId | subject   |
+|-----------+-----------|
+|       111 | Maths     |
+|       111 | Physics   |
+|       222 | Biology   |
+|       333 | Physics   |
+|       333 | Chemistry |
+
+
+** 3NF (Third Normal Form) Rules
+- Rule 1- Table must be in 2NF
+- Rule 2- Transitive functional dependency of non-prime attribute on any super key should be removed. In other words the non-key columns are independent of each others. In other words, the non-key columns are dependent on primary key, only on the primary key and nothing else.
+*** Transitive Functional Dependency
+X -> Z is a transitive dependency if the following three functional dependencies hold true:
+- X->Y
+- Y does not -> X
+- Y->Z
+
+example:-
+- {Book} ->{Author} (if we know the book, we knows the author name)
+- {Author} does not ->{Book}
+- {Author} -> {authorAge}
+
+*** Example 
+| empId | empName | empZip | empState | empCity | empDistrict |
+|-------+---------+--------+----------+---------+-------------|
+|  1001 | John    | 282005 | UP       | Agra    | Dayal Bagh  |
+|  1002 | Ajeet   | 222008 | TN       | Chennai | M-city      |
+|  1006 | Michael | 282007 | TN       | Chennai | Urrapkkam   |
+|  1101 | Lilly   | 292008 | UK       | Pauri   | Bhagwan     |
+|  1201 | Steve   | 222999 | MP       | Gwalior | Ratan       |
+
+*** Explaination
+- Super keys: {empId}, {empId, empName}, {empId, empName, empZip}…so on
+- Candidate Keys: {empId}
+- Non-prime attributes: all attributes except empId are non-prime as they are not part of any candidate keys.
+- Here, empState, empCity & empDistrict dependent on empZip. And, empZip is dependent on empId that makes non-prime attributes (empState, empCity & empDistrict) transitively dependent on super key (empId). This violates the rule of 3NF.
+
+***  Solution
+- To make this table complies with 3NF we have to break the table into two tables to remove the transitive dependency:
+*** Table-1 Employee Table
+| empId | empName | empZip |
+|-------+---------+--------|
+|  1001 | John    | 282005 |
+|  1002 | Ajeet   | 222008 |
+|  1006 | Michael | 282007 |
+|  1101 | Lilly   | 292008 |
+|  1201 | Steve   | 222999 |
+
+*** Table-2 Employee Zip
+| empZip | empState | empCity | empDistrict |
+|--------+----------+---------+-------------|
+| 282005 | UP       | Agra    | Dayal Bagh  |
+| 222008 | TN       | Chennai | M-city      |
+| 282007 | TN       | Chennai | Urrapkkam   |
+| 292008 | UK       | Pauri   | Bhagwan     |
+| 222999 | MP       | Gwalior | Ratan       |
+
+
+* Transaction Management
+- A transaction is a set of logically related operations.
+- ex: transferring money from one account to another
+
+** Problem
+- The main problem that can happen during a transaction is that the transaction can fail before finishing the all the operations in the set. This can happen due to power failure, system crash etc. This is a serious problem that can leave database in an inconsistent state.
+
+*** Solution
+- Commit: If all the operations in a transaction are completed successfully then commit those changes to the database permanently.
+- Rollback: If any of the operation fails then rollback all the changes done by previous operations.
+- But they are not sufficient when two transactions are running concurrently. To handle those problems we need to understand database ACID properties.
+
+** ACID Properties
+*** 
+- Atomicity: This property ensures that either all the operations of a transaction reflect in database or none. 
+- Consistency:  To preserve the consistency of database, the execution of transaction should take place in isolation (that means no other transaction should run concurrently when there is a transaction already running).
+*** 
+- Isolation: For every pair of transactions, one transaction should start execution only when the other finished execution.
+- Durability: Once a transaction completes successfully, the changes it has made into the database should be permanent even if there is a system failure.
+
+* Constraints in DBMS
+Constraints enforce limits to the data or type of data that can be inserted/updated/deleted from a table. The whole purpose of constraints is to maintain the data integrity during an update/delete/insert into a table.
+** Some common constraints
+- Not Null
+- Unique
+- Default
+- Check
+- Key Constraints – PRIMARY KEY, FOREIGN KEY
+- Domain constraints
+- Mapping constraints
+
+* Cardinality
+In terms of data models, cardinality refers to the relationship between two tables. Relationship can be of four types as we have already seen in Entity relationship guide:
+- One to one (person-passport)
+- One to many (customer-order)
+- Many to one (student-college)
+- Many to many (student-project)
+
+** In context of query optimization
+In terms of query, the cardinality refers to the uniqueness of a column in a table. The column with all unique values would be having the high cardinality and the column with all duplicate values would be having the low cardinality. These cardinality scores helps in query optimization.
