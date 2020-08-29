@@ -26,12 +26,12 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">INTRODUCTION TO RDBMS DESIGN</h1><h2 class="author">AYUSH GARG</h2><p class="date">Created: 2020-08-29 Sat 12:58</p>
+<section id="sec-title-slide"><h1 class="title">INTRODUCTION TO RDBMS DESIGN</h1><h2 class="author">AYUSH GARG</h2><p class="date">Created: 2020-08-29 Sat 14:14</p>
 </section>
 
 <section>
-<section id="slide-org0b31a1b">
-<h2 id="org0b31a1b">DBMS applications.</h2>
+<section id="slide-org195a880">
+<h2 id="org195a880">DBMS applications.</h2>
 <p>
 Database management system.
 </p>
@@ -46,8 +46,8 @@ Database management system.
 
 </ul>
 </section>
-<section id="slide-org26c05a4">
-<h3 id="org26c05a4">Why DBMS, when we have file system to store data ?</h3>
+<section id="slide-org1cc1efe">
+<h3 id="org1cc1efe">Why DBMS, when we have file system to store data ?</h3>
 <ul>
 <li>Data redundancy (duplication of data)</li>
 <li>Data inconsistency (something is changed at one place, need to change at other)</li>
@@ -60,8 +60,8 @@ Database management system.
 </section>
 </section>
 <section>
-<section id="slide-orge51eb6a">
-<h2 id="orge51eb6a">RDBMS Design Objective</h2>
+<section id="slide-org73beb9e">
+<h2 id="org73beb9e">RDBMS Design Objective</h2>
 <ul>
 <li>Eliminate Data Redundancy</li>
 <li>Ensure Data Integrity and Accuracy</li>
@@ -71,12 +71,11 @@ Database management system.
 </section>
 </section>
 <section>
-<section id="slide-orgd596298">
-<h2 id="orgd596298">RDBMS Design Process</h2>
+<section id="slide-orgfcab0cb">
+<h2 id="orgfcab0cb">RDBMS Design Process</h2>
 <ul>
 <li>Purpose of Database (requirement analysis)</li>
 <li>Gather Data, Organize in tables and Specify the Primary Keys</li>
-<li>Apply constraints on field names</li>
 <li>Create Relationships among tables
 <ul>
 <li>One-to-many</li>
@@ -84,11 +83,12 @@ Database management system.
 <li>one-to-one</li>
 
 </ul></li>
+<li>Apply constraints on field names</li>
 
 </ul>
 </section>
-<section id="slide-orgcd41d09">
-<h3 id="orgcd41d09"></h3>
+<section id="slide-orgdb5ff62">
+<h3 id="orgdb5ff62"></h3>
 <ul>
 <li>Refine and normalize the design
 <ul>
@@ -110,8 +110,95 @@ Database management system.
 </section>
 </section>
 <section>
-<section id="slide-org2bdddda">
-<h2 id="org2bdddda">RDBMS Concepts</h2>
+<section id="slide-org16608ea">
+<h2 id="org16608ea">Create relationship among tables</h2>
+<ul>
+<li>A database consisting of independent and unrelated tables serves little purpose (you may consider to use a spreadsheet instead).</li>
+<li>The power of relational database lies in the relationship that can be defined between tables.</li>
+<li>The most crucial aspect in designing a relational database is to identify the relationships among tables</li>
+
+</ul>
+
+</section>
+<section id="slide-org8ddc2a3">
+<h3 id="org8ddc2a3">Relationship Types</h3>
+<ul>
+<li>one-to-many
+<ul>
+<li>In a "class roster" database, a teacher may teach zero or more classes, while a class is taught by one (and only one) teacher.</li>
+<li>In a "company" database, a manager manages zero or more employees, while an employee is managed by one (and only one) manager.</li>
+<li>In a "company" database, a manager manages zero or more employees, while an employee is managed by one (and only one) manager.</li>
+
+</ul></li>
+
+</ul>
+<p target="_blank">
+<a href="ManyToOne.png" target="_blank">One-to-many</a>
+</p>
+</section>
+<section id="slide-org31076bd">
+<h3 id="org31076bd"></h3>
+<ul>
+<li>many-to-many
+<ul>
+<li>In a "product sales" database, a customer's order may contain one or more products; and a product can appear in many orders.</li>
+<li>In a "bookstore" database, a book is written by one or more authors; while an author may write zero or more books.</li>
+<li>Third table is also known as Junction table.</li>
+
+</ul></li>
+
+</ul>
+<p target="_blank">
+<a href="ManyToMany.png" target="_blank">Many-to-many</a>
+</p>
+
+</section>
+<section id="slide-orgeb5e82e">
+<h3 id="orgeb5e82e"></h3>
+<ul>
+<li>one-to-one
+<ul>
+<li>In a "product sales" database, a product may have optional supplementary information such as image, moreDescription.</li>
+<li>Keeping them inside the Products table results in many empty spaces (in those records without these optional data).</li>
+<li>Furthermore, these large data may degrade the performance of the database.</li>
+<li>Some databases limit the number of columns that can be created inside a table.</li>
+
+</ul></li>
+
+</ul>
+
+<p target="_blank">
+<a href="OneToOne.png" target="_blank">One-to-one</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc35afb5">
+<h2 id="orgc35afb5">Constraints in DBMS</h2>
+<p>
+Constraints enforce limits to the data or type of data that can be inserted/updated/deleted from a table. The whole purpose of constraints is to maintain the data integrity during an update/delete/insert into a table.
+</p>
+</section>
+<section id="slide-org284a101">
+<h3 id="org284a101">Some common constraints</h3>
+<ul>
+<li>Not Null</li>
+<li>Unique</li>
+<li>Default</li>
+<li>Check</li>
+<li>Key Constraints – PRIMARY KEY, FOREIGN KEY</li>
+<li>Domain constraints</li>
+<li>Mapping constraints</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb8f7ec1">
+<h2 id="orgb8f7ec1">RDBMS Concepts</h2>
 <p>
 RDBMS stands for relational database management system. 
 </p>
@@ -127,8 +214,8 @@ RDBMS stands for relational database management system.
 </ol>
 
 </section>
-<section id="slide-org755f66a">
-<h3 id="org755f66a">Keys in DBMS - 1</h3>
+<section id="slide-org93a4516">
+<h3 id="org93a4516">Keys in DBMS - 1</h3>
 <ul>
 <li>Primary Key</li>
 
@@ -154,8 +241,8 @@ A super key with no redundant attribute is known as candidate key
 </p>
 
 </section>
-<section id="slide-orgfc1f7e7">
-<h3 id="orgfc1f7e7">Keys in DBMS - 2</h3>
+<section id="slide-org1375c76">
+<h3 id="org1375c76">Keys in DBMS - 2</h3>
 <ul>
 <li>Composite Key</li>
 
@@ -177,8 +264,8 @@ Foreign keys are the columns of a table that points to the primary key of anothe
 </section>
 </section>
 <section>
-<section id="slide-orge384d8f">
-<h2 id="orge384d8f">Primary Key</h2>
+<section id="slide-org45c09f7">
+<h2 id="org45c09f7">Primary Key</h2>
 <ul>
 <li>The value of primary key should be unique for each row of the table. The column(s) that makes the key cannot contain duplicate values.</li>
 <li>Primary key is not allowed to have null values.</li>
@@ -191,8 +278,8 @@ Foreign keys are the columns of a table that points to the primary key of anothe
 
 </ul>
 </section>
-<section id="slide-orgb6ef56e">
-<h3 id="orgb6ef56e">Example-1</h3>
+<section id="slide-orgdea4de5">
+<h3 id="orgdea4de5">Example-1</h3>
 <ul>
 <li>Order table</li>
 
@@ -216,8 +303,8 @@ VALUES
 </pre>
 
 </section>
-<section id="slide-org7a6ffc2">
-<h3 id="org7a6ffc2">Example-2</h3>
+<section id="slide-orgc28870f">
+<h3 id="orgc28870f">Example-2</h3>
 <ul>
 <li>Student table</li>
 
@@ -236,8 +323,8 @@ CREATE TABLE Student (
 </section>
 </section>
 <section>
-<section id="slide-org7b9cccc">
-<h2 id="org7b9cccc">Super Key</h2>
+<section id="slide-org19311f0">
+<h2 id="org19311f0">Super Key</h2>
 <ul>
 <li>A super key is a set of one or more attributes (columns), which can uniquely identify a row in a table</li>
 
@@ -287,8 +374,8 @@ CREATE TABLE Student (
 </table>
 
 </section>
-<section id="slide-orgb198cdf">
-<h3 id="orgb198cdf">Super keys</h3>
+<section id="slide-org77e7629">
+<h3 id="org77e7629">Super keys</h3>
 <ul>
 <li>{EmpSSN}</li>
 <li>{EmpNumber}</li>
@@ -302,14 +389,14 @@ CREATE TABLE Student (
 </section>
 </section>
 <section>
-<section id="slide-orgd9d2a7f">
-<h2 id="orgd9d2a7f">Candidate Keys</h2>
+<section id="slide-org32e9fc5">
+<h2 id="org32e9fc5">Candidate Keys</h2>
 <p>
 A super key with no redundant attribute is known as candidate key. Candidate keys are selected from the set of super keys, the only thing we take care while selecting candidate key is that the candidate key should not have any redundant attributes. 
 </p>
 </section>
-<section id="slide-org3967e28">
-<h3 id="org3967e28">Candidate Keys</h3>
+<section id="slide-orgcc59f77">
+<h3 id="orgcc59f77">Candidate Keys</h3>
 <p>
 For the prevoius table:
 </p>
@@ -326,15 +413,15 @@ Note: A primary key is selected from the set of candidate keys. That means we ca
 </section>
 </section>
 <section>
-<section id="slide-org130ba38">
-<h2 id="org130ba38">Foreign Key</h2>
+<section id="slide-org5a8118d">
+<h2 id="org5a8118d">Foreign Key</h2>
 <p>
 Foreign keys are the columns of a table that points to the primary key of another table. They act as a cross-reference between tables.
 </p>
 
 </section>
-<section id="slide-org4dcb492">
-<h3 id="org4dcb492">Example</h3>
+<section id="slide-org81f8945">
+<h3 id="org81f8945">Example</h3>
 <pre  class="example">
 CREATE TABLE CUSTOMERS(
    ID   INT              NOT NULL,
@@ -358,8 +445,8 @@ CREATE TABLE ORDERS (
 </section>
 </section>
 <section>
-<section id="slide-org63a533b">
-<h2 id="org63a533b">Composite key</h2>
+<section id="slide-orgdc322bf">
+<h2 id="orgdc322bf">Composite key</h2>
 <p>
 A composite key is a candidate key that consists of two or more attributes (table columns) that together uniquely identify an entity occurrence (table row). 
 Note: Any key such as super key, primary key, candidate key etc. can be called composite key if it has more than one attributes.
@@ -368,8 +455,8 @@ Note: Any key such as super key, primary key, candidate key etc. can be called c
 </section>
 </section>
 <section>
-<section id="slide-org5599f82">
-<h2 id="org5599f82">Alternate Key</h2>
+<section id="slide-orgf68f76f">
+<h2 id="orgf68f76f">Alternate Key</h2>
 <p>
 A table can have multiple candidate keys. Among these candidate keys, only one key gets selected as primary key, the remaining keys are known as alternative or secondary keys.
 </p>
@@ -381,8 +468,8 @@ ex: EmpNumber
 </section>
 </section>
 <section>
-<section id="slide-org5be6f24">
-<h2 id="org5be6f24">Normalization</h2>
+<section id="slide-orgd6185b9">
+<h2 id="orgd6185b9">Normalization</h2>
 <p>
 Normalization is a systematic approach of decomposing tables to eliminate data redundancy(repetition) and undesirable characteristics like Insertion, Update and Deletion Anomalies.
 </p>
@@ -398,8 +485,8 @@ Normalization is a systematic approach of decomposing tables to eliminate data r
 </ul>
 
 </section>
-<section id="slide-org8df6f00">
-<h3 id="org8df6f00">1NF (First Normal Form) Rules</h3>
+<section id="slide-orgf6a3e97">
+<h3 id="orgf6a3e97">1NF (First Normal Form) Rules</h3>
 <ul>
 <li>Each table cell should contain a single value.</li>
 <li>Each record needs to be unique.</li>
@@ -457,8 +544,8 @@ Normalization is a systematic approach of decomposing tables to eliminate data r
 </table>
 
 </section>
-<section id="slide-org22f8b23">
-<h4 id="org22f8b23">Explaination</h4>
+<section id="slide-org7dd725d">
+<h4 id="org7dd725d">Explaination</h4>
 <p>
 Two employees (Jon &amp; Lester) are having two mobile numbers so the company stored them in the same field
 </p>
@@ -536,8 +623,8 @@ Two employees (Jon &amp; Lester) are having two mobile numbers so the company st
 
 
 </section>
-<section id="slide-orgc55bf06">
-<h3 id="orgc55bf06">2NF (Second Normal Form) Rules</h3>
+<section id="slide-orgc5514c1">
+<h3 id="orgc5514c1">2NF (Second Normal Form) Rules</h3>
 <ul>
 <li>Rule 1- Be in 1NF</li>
 <li>Rule 2- No non-prime attribute is dependent on the proper subset of any candidate key of table.</li>
@@ -545,8 +632,8 @@ Two employees (Jon &amp; Lester) are having two mobile numbers so the company st
 
 </ul>
 </section>
-<section id="slide-orgeeac0e2">
-<h4 id="orgeeac0e2">Example</h4>
+<section id="slide-orgfd577e3">
+<h4 id="orgfd577e3">Example</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -606,8 +693,8 @@ Non prime attribute: teacherAge
 </p>
 
 </section>
-<section id="slide-org822f2ec">
-<h4 id="org822f2ec">Explaination</h4>
+<section id="slide-org255d822">
+<h4 id="org255d822">Explaination</h4>
 <ul>
 <li>The table is in 1 NF because each attribute has atomic values.</li>
 <li>However, it is not in 2NF because non prime attribute teacherAge is dependent on teacherId alone which is a proper subset of candidate key.</li>
@@ -615,8 +702,8 @@ Non prime attribute: teacherAge
 </ul>
 
 </section>
-<section id="slide-org14d1c42">
-<h4 id="org14d1c42">Split the table into two</h4>
+<section id="slide-orgc4c6d5b">
+<h4 id="orgc4c6d5b">Split the table into two</h4>
 <ul>
 <li>Table 1</li>
 
@@ -655,8 +742,8 @@ Non prime attribute: teacherAge
 
 
 </section>
-<section id="slide-orgb2809c7">
-<h4 id="orgb2809c7">Table 2</h4>
+<section id="slide-org9b904f5">
+<h4 id="org9b904f5">Table 2</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -701,16 +788,16 @@ Non prime attribute: teacherAge
 
 
 </section>
-<section id="slide-org06c7c8e">
-<h3 id="org06c7c8e">3NF (Third Normal Form) Rules</h3>
+<section id="slide-orgffae936">
+<h3 id="orgffae936">3NF (Third Normal Form) Rules</h3>
 <ul>
 <li>Rule 1- Table must be in 2NF</li>
 <li>Rule 2- Transitive functional dependency of non-prime attribute on any super key should be removed. In other words the non-key columns are independent of each others. In other words, the non-key columns are dependent on primary key, only on the primary key and nothing else.</li>
 
 </ul>
 </section>
-<section id="slide-org50cc315">
-<h4 id="org50cc315">Transitive Functional Dependency</h4>
+<section id="slide-org5898ef8">
+<h4 id="org5898ef8">Transitive Functional Dependency</h4>
 <p>
 X -&gt; Z is a transitive dependency if the following three functional dependencies hold true:
 </p>
@@ -732,8 +819,8 @@ example:-
 </ul>
 
 </section>
-<section id="slide-org63561de">
-<h4 id="org63561de">Example</h4>
+<section id="slide-org53cc69b">
+<h4 id="org53cc69b">Example</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -809,8 +896,8 @@ example:-
 </table>
 
 </section>
-<section id="slide-org089aa3d">
-<h4 id="org089aa3d">Explaination</h4>
+<section id="slide-orge5b8612">
+<h4 id="orge5b8612">Explaination</h4>
 <ul>
 <li>Super keys: {empId}, {empId, empName}, {empId, empName, empZip}…so on</li>
 <li>Candidate Keys: {empId}</li>
@@ -820,15 +907,15 @@ example:-
 </ul>
 
 </section>
-<section id="slide-orga6603ce">
-<h4 id="orga6603ce">Solution</h4>
+<section id="slide-orgcedc5b1">
+<h4 id="orgcedc5b1">Solution</h4>
 <ul>
 <li>To make this table complies with 3NF we have to break the table into two tables to remove the transitive dependency:</li>
 
 </ul>
 </section>
-<section id="slide-orgb37e5fd">
-<h4 id="orgb37e5fd">Table-1 Employee Table</h4>
+<section id="slide-org6cfacbd">
+<h4 id="org6cfacbd">Table-1 Employee Table</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -880,8 +967,8 @@ example:-
 </table>
 
 </section>
-<section id="slide-org51ffb15">
-<h4 id="org51ffb15">Table-2 Employee Zip</h4>
+<section id="slide-orgb706e65">
+<h4 id="orgb706e65">Table-2 Employee Zip</h4>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -944,8 +1031,8 @@ example:-
 </section>
 </section>
 <section>
-<section id="slide-orgcb572e4">
-<h2 id="orgcb572e4">Transaction Management</h2>
+<section id="slide-orgd23304f">
+<h2 id="orgd23304f">Transaction Management</h2>
 <ul>
 <li>A transaction is a set of logically related operations.</li>
 <li>ex: transferring money from one account to another</li>
@@ -953,16 +1040,16 @@ example:-
 </ul>
 
 </section>
-<section id="slide-org2122e0a">
-<h3 id="org2122e0a">Problem</h3>
+<section id="slide-orgd1f6053">
+<h3 id="orgd1f6053">Problem</h3>
 <ul>
 <li>The main problem that can happen during a transaction is that the transaction can fail before finishing the all the operations in the set. This can happen due to power failure, system crash etc. This is a serious problem that can leave database in an inconsistent state.</li>
 
 </ul>
 
 </section>
-<section id="slide-org4ff4acf">
-<h4 id="org4ff4acf">Solution</h4>
+<section id="slide-org51e8a4f">
+<h4 id="org51e8a4f">Solution</h4>
 <ul>
 <li>Commit: If all the operations in a transaction are completed successfully then commit those changes to the database permanently.</li>
 <li>Rollback: If any of the operation fails then rollback all the changes done by previous operations.</li>
@@ -971,21 +1058,21 @@ example:-
 </ul>
 
 </section>
-<section id="slide-org135cd2a">
-<h3 id="org135cd2a">ACID Properties</h3>
-<div class="outline-text-3" id="text-org135cd2a">
+<section id="slide-org9e310b3">
+<h3 id="org9e310b3">ACID Properties</h3>
+<div class="outline-text-3" id="text-org9e310b3">
 </div>
 </section>
-<section id="slide-orgdc98146">
-<h4 id="orgdc98146"></h4>
+<section id="slide-org3e06413">
+<h4 id="org3e06413"></h4>
 <ul>
 <li>Atomicity: This property ensures that either all the operations of a transaction reflect in database or none.</li>
 <li>Consistency:  To preserve the consistency of database, the execution of transaction should take place in isolation (that means no other transaction should run concurrently when there is a transaction already running).</li>
 
 </ul>
 </section>
-<section id="slide-orgb7d9ae7">
-<h4 id="orgb7d9ae7"></h4>
+<section id="slide-orgd7d14f4">
+<h4 id="orgd7d14f4"></h4>
 <ul>
 <li>Isolation: For every pair of transactions, one transaction should start execution only when the other finished execution.</li>
 <li>Durability: Once a transaction completes successfully, the changes it has made into the database should be permanent even if there is a system failure.</li>
@@ -995,30 +1082,8 @@ example:-
 </section>
 </section>
 <section>
-<section id="slide-org9a7af2a">
-<h2 id="org9a7af2a">Constraints in DBMS</h2>
-<p>
-Constraints enforce limits to the data or type of data that can be inserted/updated/deleted from a table. The whole purpose of constraints is to maintain the data integrity during an update/delete/insert into a table.
-</p>
-</section>
-<section id="slide-org0df522a">
-<h3 id="org0df522a">Some common constraints</h3>
-<ul>
-<li>Not Null</li>
-<li>Unique</li>
-<li>Default</li>
-<li>Check</li>
-<li>Key Constraints – PRIMARY KEY, FOREIGN KEY</li>
-<li>Domain constraints</li>
-<li>Mapping constraints</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org437940f">
-<h2 id="org437940f">Cardinality</h2>
+<section id="slide-org8312728">
+<h2 id="org8312728">Cardinality</h2>
 <p>
 In terms of data models, cardinality refers to the relationship between two tables. Relationship can be of four types as we have already seen in Entity relationship guide:
 </p>
@@ -1031,8 +1096,8 @@ In terms of data models, cardinality refers to the relationship between two tabl
 </ul>
 
 </section>
-<section id="slide-org90f1413">
-<h3 id="org90f1413">In context of query optimization</h3>
+<section id="slide-orgf3cc43b">
+<h3 id="orgf3cc43b">In context of query optimization</h3>
 <p>
 In terms of query, the cardinality refers to the uniqueness of a column in a table. The column with all unique values would be having the high cardinality and the column with all duplicate values would be having the low cardinality. These cardinality scores helps in query optimization.
 </p>
