@@ -104,14 +104,14 @@ Database management system.
   - In a "company" database, a manager manages zero or more employees, while an employee is managed by one (and only one) manager.
   - In a "company" database, a manager manages zero or more employees, while an employee is managed by one (and only one) manager.
 #+ATTR_HTML: :target _blank
- [[file:ManyToOne.png][One-to-many]]
+ [[https://i.imgur.com/tddotLi.png][One-to-many]]
 ** 
 - many-to-many
   - In a "product sales" database, a customer's order may contain one or more products; and a product can appear in many orders.
   - In a "bookstore" database, a book is written by one or more authors; while an author may write zero or more books. 
   - Third table is also known as Junction table.
 #+ATTR_HTML: :target _blank
-[[file:ManyToMany.png][Many-to-many]]
+[[https://i.imgur.com/F13KsSP.png][Many-to-many]]
 
 ** 
 - one-to-one
@@ -121,7 +121,7 @@ Database management system.
   - Some databases limit the number of columns that can be created inside a table.
 
 #+ATTR_HTML: :target _blank
-[[file:OneToOne.png][One-to-one]]
+[[https://i.imgur.com/kXu3YzT.png][One-to-one]]
 
 * Constraints in DBMS
 Constraints enforce limits to the data or type of data that can be inserted/updated/deleted from a table. The whole purpose of constraints is to maintain the data integrity during an update/delete/insert into a table.

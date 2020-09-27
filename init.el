@@ -3,7 +3,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (misterioso)))
+ '(custom-enabled-themes (quote (nord-theme)))
+ '(custom-safe-themes
+   (quote
+    ("7f6d4aebcc44c264a64e714c3d9d1e903284305fd7e319e7cb73345a9994f5ef" default)))
  '(display-battery-mode t)
  '(display-line-numbers-type (quote relative))
  '(display-time-mode t)
@@ -23,6 +26,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 ;; my_settings
 
