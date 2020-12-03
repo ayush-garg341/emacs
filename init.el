@@ -15,7 +15,7 @@
  '(nil nil t)
  '(package-selected-packages
    (quote
-    (typescript-mode htmlize ox-reveal epresent nord-theme dumb-jump emms tabbar treemacs try helm-projectile projectile which-key use-package)))
+    (go-mode typescript-mode htmlize ox-reveal epresent nord-theme dumb-jump emms tabbar treemacs try helm-projectile projectile which-key use-package)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  (menu-bar-mode -1)
@@ -46,6 +46,7 @@
 
 (setq inhibit-splash-screen t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 
 ;; package_settings
 
